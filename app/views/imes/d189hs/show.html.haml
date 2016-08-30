@@ -1,0 +1,82 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row.small
+      %div
+        .tab-1
+        = "公司代碼"
+        = @imes_d189h.gsdm
+      %div
+        .tab-1
+        = "表單代碼"
+        = @imes_d189h.bddm
+      %div
+        .tab-1
+        = "表單編號"
+        = @imes_d189h.bdbh
+      %div
+        .tab-1
+        = "表單日期"
+        = @imes_d189h.bdrq
+      %div
+        .tab-1
+        = "库存仓别"
+        = @imes_d189h.kccb
+      %div
+        .tab-1
+        = "客户编号"
+        = @imes_d189h.khbh
+      %div
+        .tab-1
+        = "设计编号"
+        = @imes_d189h.sjbh
+      %div
+        .tab-1
+        = "归属部門"
+        = @imes_d189h.bmmc
+      %div
+        .tab-1
+        = "重工数量"
+        = @imes_d189h.cqty
+      %div
+        .tab-1
+        = "出货日期"
+        = @imes_d189h.chsj.strftime('%Y%m%d')
+      %div
+        .tab-1
+        = "重工說明會"
+        - if @imes_d189h.smh.eql?('1')
+          = "不需要"
+        - else
+          = "需要"
+      %div
+        .tab-1
+        = "核准者"
+        = @imes_d189h.qhyh
+      %div
+        .tab-1
+        = "核准時間"
+        = @imes_d189h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d189h.qhsj.present?
+      %div
+        .tab-1
+        = "申請人"
+        = @imes_d189h.sqyh
+  .panel-heading
+    .panel-title
+      = "重工原因说明"
+  .panel-heading
+    .panel-title
+      = @imes_d189h.cgyy.html_safe
+  .panel-heading
+    .panel-title
+      = "重工处理方式说明"
+  .panel-heading
+    .panel-title
+      = @imes_d189h.cgfs.html_safe
+  .panel-body
+    %p
+    - if @imes_d189h.bdfd.present?
+      = download_imes_file(@imes_d189h.bdfd)
+    %hr
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d189h.imes_qh_bdlcs}

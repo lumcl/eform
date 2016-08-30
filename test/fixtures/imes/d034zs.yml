@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vtweg: MyString
+  shenhe: MyString
+  caigou: MyString
+  shengguan: MyString
+  wenyuan: MyString
+  zhihui: MyString
+
+two:
+  vtweg: MyString
+  shenhe: MyString
+  caigou: MyString
+  shengguan: MyString
+  wenyuan: MyString
+  zhihui: MyString

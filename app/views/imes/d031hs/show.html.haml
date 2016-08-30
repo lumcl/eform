@@ -1,0 +1,136 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row.small
+      .col-xs-6
+        = "公司代碼"
+      .col-xs-6.text-right
+        = @imes_d031h.gsdm
+      .col-xs-6
+        = "表單代碼"
+      .col-xs-6.text-right
+        = @imes_d031h.bddm
+      .col-xs-6
+        = "表單編號"
+      .col-xs-6.text-right
+        = @imes_d031h.bdbh
+      .col-xs-6
+        = "表單日期"
+      .col-xs-6.text-right
+        = @imes_d031h.bdrq
+      .col-xs-6
+        = "客戶代碼"
+      .col-xs-6.text-right
+        = @imes_d031h.imes_d031ls.first.kunnr
+      .col-xs-6
+        = "客戶短名"
+      .col-xs-6.text-right
+        = @imes_d031h.imes_d031ls.first.sortl
+      .col-xs-6
+        = "申請人"
+      .col-xs-6.text-right
+        = @imes_d031h.qhyh
+      .col-xs-6
+        = "申請時間"
+      .col-xs-6.text-right
+        = @imes_d031h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d031h.qhsj.present?
+  .panel-heading
+    .panel-title
+      = @imes_d031h.yylb
+  .panel-heading
+    .panel-title
+      = @imes_d031h.yysm
+  .panel-body
+    %p
+    - if @imes_d031h.bdfd.present?
+      = download_imes_file(@imes_d031h.bdfd)
+
+- if @imes_d031h.imes_d031ls.present?
+  %p
+    %a{onclick: "$('#items').toggle();"}
+      顯示所有清單明細
+  %div.details#items
+    .panel.panel-default#d031l
+      .panel-body
+        - @imes_d031h.imes_d031ls.sort_by(& :posnr).group_by(& :posnr).each do |posnr,d031ls|
+          %div
+            = '接單倉'
+            = d031ls.first.werks
+            .tab-1
+              = '訂單號'
+              = d031ls.first.vbeln
+          %div
+            = '項號'
+            = d031ls.first.posnr
+            .tab-2
+              = '產品號碼'
+              = d031ls.first.matnr
+          %div
+            = '出貨'
+            = d031ls.first.vsart
+            .tab-2
+              = '付款條件'
+              = d031ls.first.zterm
+          %div
+            = '國貿條件'
+            = "#{d031ls.first.inco1}  #{d031ls.first.inco2}"
+            .tab-2
+              = '客戶物料'
+              = d031ls.first.kdmat
+          %div
+            = '單價'
+            = d031ls.first.netpr
+            .tab-2
+              = '幣別'
+              = d031ls.first.waerk
+          - d031ls.each do |d031l|
+            %div{class: 'text-muted'}
+              %div
+                = ''
+                = ''
+                = ''
+                .tab-2
+                  = '交貨數量'
+                  = d031l.omeng
+              %div
+                = ''
+                = ''
+                = ''
+                .tab-2
+                  = '交貨日期'
+                  = d031l.edatu
+              %div
+                = ''
+                = ''
+                = ''
+                .tab-2
+                  = '可用日期'
+                  = d031l.mbdat
+              %div
+                = ''
+                = ''
+                = ''
+                .tab-2
+                  = 'USD金額'
+                  = "#{d031ls.first.netpr * d031l.omeng}"
+            %hr
+          %div{class: 'text-muted'}
+            %div
+              = ''
+              = ''
+              = ''
+              .tab-2
+                = '差異 交貨數量'
+                = d031ls.sum(& :omeng)
+            %div
+              = ''
+              = ''
+              = ''
+              .tab-2
+                = '差異 USD金額'
+                = "#{d031ls.first.netpr * d031ls.sum(& :omeng)}"
+            %hr
+          %hr
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d031h.imes_qh_bdlcs}
+

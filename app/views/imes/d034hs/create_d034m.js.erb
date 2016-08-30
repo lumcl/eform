@@ -1,0 +1,6 @@
+<% if @aufks.blank? %>
+  alert('工單號碼錯誤, Wrong MO Number!');
+<% else %>
+  $('#d034m').html('<%= j render "d034m" %>');
+  $('#d034m_form').toggle();
+<% end %>

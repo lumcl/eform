@@ -1,0 +1,43 @@
+source 'https://ruby.taobao.org'
+#ruby '2.0.0'
+gem 'rails', '4.2.7'
+#gem 'ruby-oci8','2.2.0.2'
+gem 'composite_primary_keys', '~> 8.1', '>= 8.1.1'
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.6.0'
+gem 'uuid', '~> 2.3', '>= 2.3.8'
+#gem 'sqlite3'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'jquery-rails'
+gem 'jbuilder', '~> 2.0'
+
+#gem 'bootstrap-sass'
+gem 'bootstrap3_autocomplete_input', '~> 0.1.1'
+gem 'devise'
+gem 'devise_ldap_authenticatable','0.8.1'
+gem 'cancan'
+gem 'figaro'
+gem 'haml-rails'
+#gem 'high_voltage'
+gem 'simple_form'
+gem 'puma'
+gem 'kaminari'
+gem 'paperclip', '~> 4.3.0'
+gem 'tzinfo-data'
+gem 'rest-client'
+#gem 'axlsx', '~> 2.0', '>= 2.0.1'
+#gem 'axlsx_rails', '~> 0.4.0'
+#gem 'chart-js-rails' #for chart.js
+
+group :development do
+  gem 'better_errors'
+  #gem 'binding_of_caller'
+  gem 'html2haml'
+  gem 'rails_layout'
+end
+group :development, :test do
+  gem 'rubocop'
+  # gem 'byebug'
+  # gem 'web-console', '~> 2.0'
+end

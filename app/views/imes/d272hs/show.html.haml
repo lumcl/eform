@@ -1,0 +1,84 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row
+      .col-xs-6
+        = @imes_d272h.bdbh
+      .col-xs-6.text-right
+        = @imes_d272h.bdrq
+      .col-xs-6
+        = @imes_d272h.sqyh
+      .col-xs-6.text-right
+        = @imes_d272h.werks
+  .panel-heading
+    .panel-title
+      = @imes_d272h.imes_qh_bdtx.bdtx
+  .panel-body
+    %div
+      工單編號
+      .tab-1= @imes_d272h.aufnr
+    %div
+      訂單數量
+      .tab-1= number_with_precision(@imes_d272h.psmng, precision: 12, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+
+    %div
+      上線日期
+      .tab-1= @imes_d272h.gstri
+    %div
+      溢領原因
+      .tab-1= @imes_d272h.yylb
+    %div
+      責任單位
+      .tab-1
+        = @imes_d272h.kostl
+        = @imes_d272h.ktext
+
+    %br
+    %div
+      機種編號
+      .tab-1= @imes_d272h.matnr
+    %div
+      = @imes_d272h.maktx
+    %br
+    %p
+      = @imes_d272h.yysm
+      %div
+      %b
+        溢領金額為
+        = 'RMB'
+        = @imes_d272h.bdamt
+
+      - if @imes_d272h.bdfd.present?
+        = download_imes_file(@imes_d272h.bdfd)
+
+- if @imes_d272h.imes_d272ls.present?
+  %p
+    %a{onclick: "$('#items').toggle();"}
+      %b
+        顯示所有溢領材料明細
+  %hr
+  %div.details#items{style:"display:none"}
+    %table.table.table-bordered
+      - @imes_d272h.imes_d272ls.sort_by(& :sqnr).each do |d272l|
+        %tr
+          %td= d272l.sqnr
+          %td
+            = d272l.cwerks
+            .pull-right
+              =d272l.cmatkl
+        %tr
+          %th.text-nowrap 料件編號
+          %td= d272l.cmatnr
+        %tr
+          %th 料件規格
+          %td= d272l.cmaktx
+        %tr
+          %th.text-nowrap 數量/金額
+          %th
+            = number_with_precision(d272l.reqq, precision: 12, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+            = d272l.cmeins
+            .pull-right
+              RMB
+              = number_with_precision(d272l.reqa.to_f.precision(2), precision: 12, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d272h.imes_qh_bdlcs}

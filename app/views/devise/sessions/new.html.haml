@@ -1,0 +1,10 @@
+%h2 用戶認證
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    = f.input :email, label:'郵件地址', required: false, autofocus: true, value: params[:email] ||''
+    .clearfix
+    = f.input :password, label: '登入密碼', required: false, placeholder: 'lotus notes的密碼'
+  .form-actions
+    .clearfix
+    = f.button :submit, '系統登入'
+

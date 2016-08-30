@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bdbh: MyString
+  vbeln: MyString
+  posnr: MyString
+  wemng: 9.99
+  edatu: MyString
+  purdate: MyString
+  strdate: MyString
+  duedate: MyString
+  aufnr: MyString
+
+two:
+  bdbh: MyString
+  vbeln: MyString
+  posnr: MyString
+  wemng: 9.99
+  edatu: MyString
+  purdate: MyString
+  strdate: MyString
+  duedate: MyString
+  aufnr: MyString

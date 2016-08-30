@@ -1,0 +1,45 @@
+= simple_form_for(@imes_d034h) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :vbeln
+    = f.input :audat
+    = f.input :auart
+    = f.input :auartx
+    = f.input :matnr
+    = f.input :werks
+    = f.input :pwerk
+    = f.input :kunnr
+    = f.input :name1
+    = f.input :addr1
+    = f.input :bstkd
+    = f.input :kdmat
+    = f.input :inco1
+    = f.input :inco2
+    = f.input :vbsed
+    = f.input :quote
+    = f.input :waerk
+    = f.input :netpr
+    = f.input :exrate
+    = f.input :mat
+    = f.input :lab
+    = f.input :ovh
+    = f.input :mch
+    = f.input :profit
+    = f.input :sqyh
+    = f.input :sqsj
+    = f.input :qhyh
+    = f.input :qhsj
+    = f.input :bdjg
+    = f.input :gsdm
+    = f.input :bdbh
+    = f.input :bddm
+    = f.input :bdzt
+    = f.input :mark1
+    = f.input :mark2
+
+  .form-actions
+    .clearfix
+    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+      %span.glyphicon.glyphicon-floppy-save
+      = t('save')

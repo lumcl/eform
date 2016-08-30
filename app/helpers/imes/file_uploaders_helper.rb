@@ -1,0 +1,2 @@
+module Imes::FileUploadersHelper
+end

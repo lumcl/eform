@@ -1,0 +1,52 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    %div
+      = "公司代碼"
+      .tab-1
+        = @imes_d600h.gsdm
+    %div
+      = "表單代碼"
+      .tab-1
+        = @imes_d600h.bddm
+    %div
+      = "表單編號"
+      .tab-1
+        = @imes_d600h.bdbh
+    %div
+      = "表單日期"
+      .tab-1
+        = @imes_d600h.bdrq
+    %div
+      = "類型"
+      .tab-1
+        = @imes_d600h.qclx
+    %div
+      = "RD人员"
+      .tab-1
+        = @imes_d600h.rdyh
+    %div
+      = "SD人员"
+      .tab-1
+        = @imes_d600h.sdyh
+    %div
+      = "机种名称"
+      .tab-1
+        = @imes_d600h.qcay
+    %div
+      = "申請人"
+      .tab-1
+        = @imes_d600h.qhyh
+  .panel-heading
+    .panel-title
+      = "备注"
+  .panel-heading
+    .panel-title
+      = @imes_d600h.qcnr
+  .panel-body
+    %p
+    - if @imes_d600h.bdfd.present?
+      = download_imes_file(@imes_d600h.bdfd)
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d600h.imes_qh_bdlcs}
+

@@ -1,0 +1,129 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row.small
+      %div
+        .tab-1
+        = "公司代碼"
+        = @imes_d302h.gsdm
+      %div
+        .tab-1
+        = "表單代碼"
+        = @imes_d302h.bddm
+      %div
+        .tab-1
+        = "表單編號"
+        = @imes_d302h.bdbh
+      %div
+        .tab-1
+        = "表單日期"
+        = @imes_d302h.bdrq
+      %div
+        .tab-1
+        = "类型"
+        = @imes_d302h.zclx
+      %div
+        .tab-1
+        = "资产编号"
+        = @imes_d302h.zcbh
+      %div
+        .tab-1
+        = "资产名称"
+        = @imes_d302h.zcmc
+      %div
+        .tab-1
+        = "资产成本中心"
+        = @imes_d302h.zccb
+      %div
+        .tab-1
+        = "资产保管部门"
+        = @imes_d302h.zcbg
+      %div
+        .tab-1
+        = "帳面價值"
+        = @imes_d302h.zmjz
+      %div
+        .tab-1
+        = "保管人"
+        = @imes_d302h.bgr
+      %div
+        .tab-1
+        = "數量"
+        = @imes_d302h.qty
+      %div
+        .tab-1
+        = "資產取得日期"
+        = @imes_d302h.zbdt
+      %div
+        .tab-1
+        = "取得價值"
+        = @imes_d302h.qdjz
+      %div
+        .tab-1
+        = "資產存放地點"
+        = @imes_d302h.addr
+      %div
+        .tab-1
+        = "部門代碼"
+        = @imes_d302h.sqbm
+      %div
+        .tab-1
+        = "部門名稱"
+        = @imes_d302h.bmmc
+      %div
+        .tab-1
+        = "核准者"
+        = @imes_d302h.qhyh
+      %div
+        .tab-1
+        = "核准時間"
+        = @imes_d302h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d302h.qhsj.present?
+      %div
+        .tab-1
+        = "申請人"
+        = @imes_d302h.sqyh
+      %div
+        .tab-1
+        = "供應商代碼"
+        = @imes_d302h.supplier
+      %div
+        .tab-1
+        = "供應商"
+        = @imes_d302h.supplier_name
+      %div
+        .tab-1
+        = "联系人"
+        = @imes_d302h.contact
+      %div
+        .tab-1
+        = "联系电话"
+        = @imes_d302h.phone
+      %div
+        .tab-1
+        = "报价"
+        = @imes_d302h.price
+      %div
+        .tab-1
+        = "单位"
+        = @imes_d302h.unit
+      %div
+        .tab-1
+        = "数量"
+        = @imes_d302h.quality
+      %div
+        .tab-1
+        = "币别"
+        = @imes_d302h.currency
+  .panel-heading
+    .panel-title
+      = "故障原因"
+  .panel-heading
+    .panel-title
+      = @imes_d302h.bdbj
+  .panel-body
+    %p
+    - if @imes_d302h.bdfd.present?
+      = download_imes_file(@imes_d302h.bdfd)
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d302h.imes_qh_bdlcs}
+

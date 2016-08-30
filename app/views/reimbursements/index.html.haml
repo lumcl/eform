@@ -1,0 +1,66 @@
+%h3= t('attributes.reimbursement')
+
+%h5
+  = link_to t('new_reimbursement'), new_reimbursement_path
+
+= form_tag(reimbursements_url, method: 'get', class: 'form-inline') do
+  = text_field_tag :name, nil, placeholder: t('attributes.name'), class: 'form-control input-sm', value: params[:name]
+  = button_tag class: 'btn btn-success btn-form-submit', type: 'button' do
+    %span.glyphicon.glyphicon-search
+
+.table-responsive
+  %table.table.table-hover.table-condensed.table-bordered
+    %thead
+      %tr
+        %th= t('action')
+        %th= t('attributes.name')
+        %th= t('attributes.bukrs')
+        %th= t('attributes.belnr')
+        %th= t('attributes.gjahr')
+        %th= t('attributes.blart')
+        %th= t('attributes.budat')
+        %th= t('attributes.bldat')
+        %th= t('attributes.waers')
+        %th= t('attributes.subject')
+        %th= t('attributes.body')
+        %th= t('attributes.approved')
+        %th= t('attributes.status')
+        %th= t('attributes.deleted')
+        %th= t('attributes.owner_id')
+        %th= t('attributes.creator_id')
+        %th= t('attributes.updater_id')
+        %th= t('attributes.creator_ip')
+        %th= t('attributes.updater_ip')
+        %th= t('attributes.uuid')
+    %tbody
+      - @reimbursements.each do |reimbursement|
+        %tr
+          %td
+            = link_to t('edit'), edit_reimbursement_path(reimbursement)
+            |
+            = link_to t('delete'), reimbursement, :method => :delete, :data => { :confirm => t('confirm_delete')}
+
+          %td= reimbursement.name
+          %td= reimbursement.bukrs
+          %td= reimbursement.belnr
+          %td= reimbursement.gjahr
+          %td= reimbursement.blart
+          %td= reimbursement.budat
+          %td= reimbursement.bldat
+          %td= reimbursement.waers
+          %td= reimbursement.subject
+          %td= reimbursement.body
+          %td= reimbursement.approved
+          %td= reimbursement.status
+          %td= reimbursement.deleted
+          %td= reimbursement.owner_id
+          %td= reimbursement.creator_id
+          %td= reimbursement.updater_id
+          %td= reimbursement.creator_ip
+          %td= reimbursement.updater_ip
+          %td= reimbursement.uuid
+
+%h5
+  = link_to t('new_reimbursement'), new_reimbursement_path
+
+= paginate @reimbursements unless @reimbursements.empty?

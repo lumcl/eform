@@ -1,0 +1,51 @@
+= simple_form_for(@reimbursement) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, :label => t('attributes.numbering'), :readonly => :readonly unless @reimbursement.name.nil?
+    .row
+      .col-xs-6
+        = f.input :owner, :label=> t('attributes.reimbursement_by'),:as => :autocomplete, :source_query => autocomplete_user_email_users_url, :items => 20, :minLength => 1,
+          :hint => t('select_user_hint')
+      .col-xs-6
+        = f.input :created_at, :as => :string, input_html:{value: (@reimbursement.created_at || Time.now).strftime('%Y-%m-%d')}, :disabled => true
+    .row
+      .col-xs-6
+        = f.input :bukrs, :collection=> Sap::T001.select_options, :label_method => :butxt,:value_method => :bukrs
+      .col-xs-6
+        = f.input :waers, :collection=> Sap::Tcurr.select_options, :label_method => :ktext,:value_method => :waers
+    .row
+      .col-xs-6
+        =# f.input :budat, as: :date_time_picker, input_html:{value: @reimbursement.budat.strftime('%Y-%m-%d')}
+      .col-xs-6
+        =# f.input :bldat, as: :date_time_picker, input_html:{value: @reimbursement.bldat.strftime('%Y-%m-%d')}
+    = f.input :subject
+    = f.input :body
+    =# f.input :approved
+    =# f.input :status
+    =# f.input :deleted
+    =# f.input :owner_id
+    =# f.input :creator_id
+    =# f.input :updater_id
+    =# f.input :creator_ip
+    =# f.input :updater_ip
+    =# f.input :uuid
+
+  .form-actions
+    .clearfix
+    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+      %span.glyphicon.glyphicon-floppy-save
+      = t('save')
+
+:javascript
+  $(document).ready(function () {
+    $('.form_datetime').each(function () {
+      $(this).datetimepicker({
+        pickTime: false,
+        useStrict: true,
+        autoclose: true,
+        todayBtn: true,
+        format: 'YYYY-MM-DD'
+      }).bind('keydown', false);
+    });
+  })

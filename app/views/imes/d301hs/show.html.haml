@@ -1,0 +1,144 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row.small
+      %div
+        .tab-1
+        = "公司代碼"
+        = @imes_d301h.gsdm
+      %div
+        .tab-1
+        = "表單代碼"
+        = @imes_d301h.bddm
+      %div
+        .tab-1
+        = "表單編號"
+        = @imes_d301h.bdbh
+      %div
+        .tab-1
+        = "表單日期"
+        = @imes_d301h.bdrq
+      %div
+        .tab-1
+        = "类型"
+        = @imes_d301h.zclx
+      %div
+        .tab-1
+        = "资产编号"
+        = @imes_d301h.zcbh
+      %div
+        .tab-1
+        = "资产名称"
+        = @imes_d301h.zcmc
+      %div
+        .tab-1
+        = "资产成本中心"
+        = @imes_d301h.zccb
+      %div
+        .tab-1
+        = "资产保管部门"
+        = @imes_d301h.zcbg
+      %div
+        .tab-1
+        = "帳面價值"
+        = @imes_d301h.zmjz
+      %div
+        .tab-1
+        = "保管人"
+        = @imes_d301h.bgr
+      %div
+        .tab-1
+        = "數量"
+        = @imes_d301h.qty
+      %div
+        .tab-1
+        = "資產取得日期"
+        = @imes_d301h.zbdt
+      %div
+        .tab-1
+        = "取得價值"
+        = @imes_d301h.qdjz
+      %div
+        .tab-1
+        = "資產存放地點"
+        = @imes_d301h.addr
+      %div
+        .tab-1
+        = "部門代碼"
+        = @imes_d301h.sqbm
+      %div
+        .tab-1
+        = "部門名稱"
+        = @imes_d301h.bmmc
+      %div
+        .tab-1
+        = "核准者"
+        = @imes_d301h.qhyh
+      %div
+        .tab-1
+        = "核准時間"
+        = @imes_d301h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d301h.qhsj.present?
+      %div
+        .tab-1
+        = "申請人"
+        = @imes_d301h.sqyh
+  .panel-heading
+    .panel-title
+      = "故障原因"
+  .panel-heading
+    .panel-title
+      = @imes_d301h.qcnr.html_safe
+  .panel-body
+    %p
+    - if @imes_d301h.bdfd.present?
+      = download_imes_file(@imes_d301h.bdfd)
+
+- if @imes_d301h.imes_d301rs.present?
+  %p
+    %a{onclick: "$('#items').toggle();"}
+      顯示所有清單明細
+  %div.details#items
+    .panel.panel-default#d301r
+      .panel-body
+        - @imes_d301h.imes_d301rs.sort_by(& :seq).group_by(& :seq).each do |seq,d301rs|
+          - d301rs.each do |d031r|
+            %div{class: 'text-muted'}
+              %div
+                .tab-2
+                  = '序號'
+                  = d031r.seq
+              %div
+                .tab-2
+                  = '供應商代碼'
+                  = d031r.supplier
+              %div
+                .tab-2
+                  = '供應商'
+                  = d031r.supplier_name
+              %div
+                .tab-2
+                  = '联系人'
+                  = d031r.contact
+              %div
+                .tab-2
+                  = '联系电话'
+                  = d031r.phone
+              %div
+                .tab-2
+                  = '报价'
+                  = d031r.price
+              %div
+                .tab-2
+                  = '单位'
+                  = d031r.unit
+              %div
+                .tab-2
+                  = '數量'
+                  = d031r.quality
+              %div
+                .tab-2
+                  = '币别'
+                  = d031r.currency
+            %hr
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d301h.imes_qh_bdlcs}
+

@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading
+    = current_user.email.split('@').first.upcase
+    .pull-right
+      未簽核表單
+  .list-group
+    - @imes_qh_bdlcs.each do |row|
+      %a.list-group-item{href: url_for(controller: "imes/#{row.bddm.downcase}hs", action: 'show', id: row.bdbh)}
+        %b.list-group-item-text
+          = row.imes_qh_bdtx.bdtx
+        .list-group-item-text.small
+          = row.sqyh
+          .pull-right
+            = row.yjsj.strftime('%Y%m%d %H:%M') if row.yjsj.present?
+            =# "#{time_ago_in_words(row.yjsj)} ago"
+        .list-group-item-text.small
+          = row.bdbh
+          .pull-right
+            = "[審核]" if row.qhlx.eql?('R')
+            = "[知會]" if row.qhlx.eql?('I')
+            .text-primary
+              = "[核准]" if row.qhlx.eql?('A')

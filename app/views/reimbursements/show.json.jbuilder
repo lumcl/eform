@@ -1,0 +1,1 @@
+json.extract! @reimbursement, :id, :name, :bukrs, :belnr, :gjahr, :blart, :budat, :bldat, :waers, :subject, :body, :approved, :status, :deleted, :owner_id, :creator_id, :updater_id, :creator_ip, :updater_ip, :uuid, :created_at, :updated_at

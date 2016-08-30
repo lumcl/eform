@@ -1,0 +1,67 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      .pull-left
+        查詢 Enq. SO Form
+      .pull-right
+        = link_to '新建 New', get_vbeln_imes_d034hs_path
+      .clearfix
+  .panel-body
+    = form_tag(imes_d034hs_path, method: 'get') do
+      = hidden_field_tag 'sbm', 'X'
+      .form-group.col-xs-12.col-sm-4
+        %label{for: 'audat'}SO日期 Date
+        = text_field_tag 'audat', params[:audat], class: 'form-control'
+      .form-group.col-xs-12.col-sm-4
+        %label{for: 'vbeln'}SO 號碼
+        = text_field_tag 'vbeln', params[:vbeln], class: 'form-control'
+      .form-group.col-xs-12.col-sm-4
+        %label{for: 'kunnr'}客戶代碼 Customer
+        = text_field_tag 'kunnr', params[:kunnr], class: 'form-control'
+      .form-group.col-xs-12.col-sm-4
+        %label{for: 'matnr'}產品編號 Product
+        = text_field_tag 'matnr', params[:matnr], class: 'form-control'
+      .form-group.col-xs-12.col-sm-4
+        %label{for: 'sqyh'}申請者 Applicant
+        = text_field_tag 'sqyh', params[:sqyh] || current_user.email.split('@').first.upcase, class: 'form-control'
+      .form-group.col-xs-12
+        = button_tag class: 'btn btn-defult btn-form-submit', type: 'button' do
+          %span.glyphicon.glyphicon-search
+          查詢 Enquiry
+
+.table-responsive
+  %table.table.table-hover.table-condensed.table-bordered.small
+    %thead
+      %tr
+        %th
+          SO訂單
+          %br
+          SO#
+        %th
+          SO日期
+          %br
+          Date
+        %th
+          客戶代碼
+          %br
+          Customer
+        %th
+          產品編號
+          %br
+          Product
+        %th
+          結果
+          %br
+          Aprv
+        %th.visible-sm.visible-lg.visible-md 名稱 Company
+    %tbody
+      - @imes_d034hs.each do |imes_d034h|
+        %tr
+          %td= link_to imes_d034h.vbeln, imes_d034h
+          %td= imes_d034h.audat
+          %td= imes_d034h.kunnr
+          %td= imes_d034h.matnr
+          %td= imes_d034h.bdjg
+          %td.visible-sm.visible-lg.visible-md= imes_d034h.name1
+
+= paginate @imes_d034hs unless @imes_d034hs.empty?

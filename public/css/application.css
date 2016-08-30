@@ -1,0 +1,13 @@
+th{background-color: #F8F8F8;}
+a:hover {color: red; text-decoration:underline;}
+@media print{.no-print{display: none !important;}}
+.navbar{margin-bottom: 5px;}
+.tab-2{padding-left: 2em; display: inline;}
+.tab-1{padding-left: 1em; display: inline;}
+/*!
+@media only screen and (min-width: 700px){.container{width: 600px}}
+*/
+@media print{
+    .no-print{display: none !important;}
+    a:link:after,a:visited:after {content: "" !important;}
+}

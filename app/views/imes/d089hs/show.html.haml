@@ -1,0 +1,134 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row
+      .col-xs-6
+        = @imes_d089h.bdbh
+      .col-xs-6.text-right
+        = @imes_d089h.bdrq
+      .col-xs-6
+        = @imes_d089h.sqyh
+      .col-xs-6.text-right
+        = @imes_d089h.werks
+        = '/'
+        = @imes_d089h.mwskz
+
+  .panel-heading
+    .panel-title
+      = @imes_d089h.imes_qh_bdtx.bdtx
+  .panel-body
+
+    %p
+      = @imes_d089h.lifnr
+      = @imes_d089h.sortl
+      = "( #{@imes_d089h.waers} )"
+      %br
+        = @imes_d089h.name1
+    %p
+      %b{class: @imes_d089h.maxpt > 0 ? 'text-danger' : @imes_d089h.maxpt < 0 ? 'text-success' : ''}
+        = @imes_d089h.bdyy
+        = "#{@imes_d089h.minpt}%"
+        = '~'
+        = "#{@imes_d089h.maxpt}%"
+    %p
+      = @imes_d089h.bdnr
+    - if @imes_d089h.bdfd.present?
+      = download_imes_file(@imes_d089h.bdfd)
+
+- if @imes_d089h.imes_d089ls.present?
+  %p
+    %a{onclick: "$('#items').toggle();"}
+      顯示所有報價料件清單明細
+  %div.details#items
+    .panel.panel-default#d089l
+      .panel-body
+        - @imes_d089h.imes_d089ls.sort_by(& :sqnr).each do |d089l|
+          %div{class: "#{'text-muted' if d089l.dltfg.eql?('Y')}"}
+            %div
+              = d089l.matnr
+              .tab-2
+                = d089l.matkl
+            %div
+              = d089l.maktx
+            %div
+              新單價:
+              .tab-1
+                = @imes_d089h.waers
+                = d089l.untpr
+                = '/'
+                = d089l.meins
+            %div
+              漲跌%:
+              .tab-1
+                = "#{d089l.oldpt}%"
+              .pull-right
+                %a{onclick: "$('#detail-#{d089l.id}').toggle();"}
+                  顯示/隱藏明細
+            %div.details{id: "detail-#{d089l.id}"}
+              %div
+                生效日:
+                .tab-1
+                  = d089l.datab
+                  .tab-1
+                    - if d089l.chgpo.eql?('1')
+                      最優策略
+                    - elsif d089l.chgpo.eql?('2')
+                      舊PO生效
+                    - else
+                      新PO生效
+              %div
+                新單價:
+                .tab-1
+                  = 'RMB'
+                  = d089l.rmbpr
+                  = '/'
+                  = d089l.meins
+              %div
+                舊單價:
+                .tab-1
+                  = 'RMB'
+                  = d089l.oldpr
+                  = '/'
+                  = d089l.meins
+              %div
+                區最低:
+                .tab-1
+                  = 'RMB'
+                  = d089l.minpr
+                  = '/'
+                  = d089l.meins
+              - if d089l.dltfg == 'Y'
+                %p
+                  %div
+                    此項報價已經被
+                    = d089l.dltid
+                    剔除.
+                    %br
+                    原由:
+                    = d089l.dlttx
+              - else
+                = form_tag(url_for(controller: 'imes/d089hs', action: 'delete_d089l'), method: 'get', remote: true, onsubmit: "val_dlttx(#{d089l.id})") do
+                  = hidden_field_tag :id, d089l.id
+                  .form-group
+                    .row
+                      .col-xs-9
+                        = text_field_tag :dlttx, '', class: 'form-control', placeholder: '請輸入剔除報價原因', id: "dlttx_#{d089l.id}"
+                      .col-xs-3
+                        %div{id: "submit-#{d089l.id}"}
+                          = submit_tag '剔除', class: 'btn btn-default'
+                    %div{id:"result-#{d089l.id}"}
+          %hr
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d089h.imes_qh_bdlcs}
+
+:javascript
+  function val_dlttx(rowId){
+    if ($('#dlttx_'+rowId).val() == ""){
+      alert('請輸入剔除報價原因...');
+      $('#dlttx_'+rowId).focus();
+    }
+  }
+
+  $(document).ready(function(){
+    $('.details').hide();
+  });

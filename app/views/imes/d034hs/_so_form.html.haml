@@ -1,0 +1,205 @@
+.panel.panel-default
+  .panel-body
+    .row
+      .col-xs-6
+        = @imes_d034h.bdbh
+      .col-xs-6.text-right
+        = @imes_d034h.audat
+      .col-xs-6
+        = @imes_d034h.sqyh
+        - if @imes_d034h.bdzt.blank?
+          = link_to '刪除 Delete SO Form', @imes_d034h, :method => :delete, :data => { :confirm => '確認刪除 Confirm Delete'}
+      .col-xs-6.text-right
+        = @imes_d034h.werks
+  .panel-heading
+    .panel-title
+      Internal Confirmation (SO Form)
+      = @imes_d034h.vbeln
+  .panel-body
+    .col-xs-12.col-sm-6
+      產品編碼
+      .tab-1
+        %strong
+          = @imes_d034h.matnr
+    .col-xs-12.col-sm-6
+      接單工廠
+      .tab-1= @imes_d034h.werks
+      .tab-1
+        生產工廠
+      .tab-1= @imes_d034h.pwerk
+    .col-xs-12.col-sm-6
+      客戶名稱
+      .tab-1
+        = @imes_d034h.kunnr
+        = @imes_d034h.name1
+    .col-xs-12.col-sm-6
+      訂單類型
+      .tab-1
+        = @imes_d034h.auart
+        = @imes_d034h.auartx
+    .col-xs-12
+      收貨地址
+      .tab-1
+        = @imes_d034h.addr1
+    .col-xs-12.col-sm-6
+      客戶PO號
+      .tab-1
+        = @imes_d034h.bstkd
+    .col-xs-12.col-sm-6
+      客戶料號
+      .tab-1
+        = @imes_d034h.kdmat
+    .col-xs-12.col-sm-6
+      國貿條件
+      .tab-1
+        = @imes_d034h.inco1
+        = @imes_d034h.inco2
+    .col-xs-12.col-sm-6
+      運輸方式
+      .tab-1
+        = @imes_d034h.vbsed
+    .clearfix
+    .col-xs-12.col-sm-6
+      報價單號
+      .tab-1
+        = @imes_d034h.quote
+    .col-xs-12.col-sm-6
+      產品單價
+      .tab-1
+        %strong
+          = @imes_d034h.netpr
+          = @imes_d034h.waerk
+
+    .col-xs-12.text-primary
+      %hr
+      CS13成本幣別為RMB, 匯率:
+      = number_with_precision(@imes_d034h.exrate, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+    .visible-xs
+      .col-xs-12
+        材料金額
+        .tab-1
+          = number_with_precision(@imes_d034h.mat, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        人工金額
+        .tab-1
+          = number_with_precision(@imes_d034h.lab, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        製費金額
+        .tab-1
+          = number_with_precision(@imes_d034h.ovh, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        機器金額
+        .tab-1
+          = number_with_precision(@imes_d034h.mch, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        單位成本
+        .tab-1
+          = number_with_precision(@imes_d034h.unit_cost, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        產品售價
+        .tab-1
+          = number_with_precision(@imes_d034h.netpr * @imes_d034h.exrate, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        毛利金額
+        .tab-1
+          = number_with_precision(@imes_d034h.profit * @imes_d034h.exrate, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+      .col-xs-12
+        毛利率%
+        .tab-1
+          = number_with_precision(@imes_d034h.profit_percentage, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+
+    .visible-sm.visible-lg.visible-md
+      .col-xs-12
+        %table.table.table-bordered.table-condensed.small
+          %thead
+            %tr
+              %th.text-right 材料
+              %th.text-right 人工
+              %th.text-right 製費
+              %th.text-right 機器
+              %th.text-right 成本
+              %th.text-right 售價
+              %th.text-right 毛利
+              %th.text-right 毛利%
+          %tbody
+            %tr
+              %td.text-right= number_with_precision(@imes_d034h.mat, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.lab, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.ovh, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.mch, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.unit_cost, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.netpr * @imes_d034h.exrate, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.profit, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+              %td.text-right= number_with_precision(@imes_d034h.profit_percentage, precision: 4, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+
+
+    .col-xs-12
+      .text-primary
+        交期排程
+      .table-responsive
+        %table.table.table-bordered.table-condensed.small
+          %thead
+            %tr
+              %td.text-center.text-primary{colspan:4} 業務部門
+              /
+                %td.text-center.text-primary 採購
+                %td.text-center.text-primary{colspan:3} 生管部門
+            %tr
+              %th.text-center 項次
+              %th.text-right 數量
+              %th.text-center 交期
+              %th.text-center 可用
+              /
+                %th.text-center S/D
+                %th.text-center 工單
+                %th.text-center S/D
+                %th.text-center D/D
+          %tbody
+            - @imes_d034h.imes_d034ls.each do |d034l|
+              %tr
+                %td.text-center= d034l.posnr
+                %td.text-right= number_with_precision(d034l.wmeng, precision: 12, significant: true, strip_insignificant_zeros: true, delimiter: ',')
+                %td.text-center= d034l.edatu
+                %td.text-center= d034l.mbdat
+                /
+                  %td.text-center= d034l.purdate
+                  %td.text-center= d034l.aufnr
+                  %td.text-center= d034l.strdate
+                  %td.text-center= d034l.duedate
+
+
+    .col-xs-12.col-sm-6
+      .panel.panel-default
+        .panel-heading
+          .panel-title.small
+            外箱正嘜
+        .panel-body
+          %samp
+            = simple_format(@imes_d034h.mark1)
+
+    .col-xs-12.col-sm-6
+      .panel.panel-default
+        .panel-heading
+          .panel-title.small
+            外箱側嘜
+        .panel-body
+          %samp
+            = simple_format(@imes_d034h.mark2)
+
+    - if @imes_d034h.bdfd.present?
+      .col-xs-12
+        = download_imes_file(@imes_d034h.bdfd)
+
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          .panel-title.small
+            表單內容
+        .panel-body
+          %samp
+            = simple_format(@imes_d034h.bdnr)
+
+= render partial: 'layouts/bd_file_upload_form', locals: {object: @imes_d034h}
+
+%div#d034m
+  = render 'd034m'

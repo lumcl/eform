@@ -1,0 +1,28 @@
+%h3= t('attributes.imes_q001h')
+
+%h5
+  = link_to t('new_imes_q001h'), new_imes_q001h_path
+
+= form_tag(imes_q001hs_url, method: 'get', class: 'form-inline') do
+  = text_field_tag :name, nil, placeholder: t('attributes.name'), class: 'form-control input-sm', value: params[:name]
+  = button_tag class: 'btn btn-success btn-form-submit', type: 'button' do
+    %span.glyphicon.glyphicon-search
+
+.table-responsive
+  %table.table.table-hover.table-condensed.table-bordered
+    %thead
+      %tr
+        %th= t('action')
+    %tbody
+      - @imes_q001hs.each do |imes_q001h|
+        %tr
+          %td
+            = link_to t('edit'), edit_imes_q001h_path(imes_q001h)
+            |
+            = link_to t('delete'), imes_q001h, :method => :delete, :data => { :confirm => t('confirm_delete')}
+
+
+%h5
+  = link_to t('new_imes_q001h'), new_imes_q001h_path
+
+= paginate @imes_q001hs unless @imes_q001hs.empty?

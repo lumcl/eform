@@ -1,0 +1,12 @@
+%h3= t('attributes.reimbursement')
+%h5
+  = link_to t('edit'), edit_reimbursement_path(@reimbursement)
+  \|
+  = link_to t('back'), reimbursements_path
+
+= render partial: 'layouts/show', :locals => {object: @reimbursement}
+
+%h5
+  = link_to t('edit'), edit_reimbursement_path(@reimbursement)
+  \|
+  = link_to t('back'), reimbursements_path

@@ -1,0 +1,158 @@
+- qh_bdlcs.sort_by(& :bzdm).each do |row|
+  %b
+    = row.qhyh || row.ysyh
+  .pull-right
+    = "[審核]" if row.qhlx.eql?('R')
+    = "[知會]" if row.qhlx.eql?('I')
+    %b.text-primary
+      = "[核准]" if row.qhlx.eql?('A')
+    - if row.qhjg.eql?('Y')
+      %span.text-success.glyphicon.glyphicon-ok
+    - elsif row.qhjg.eql?('N')
+      %span.text-danger.glyphicon.glyphicon-remove
+    - else
+      %span.text-warning.glyphicon.glyphicon-pause
+  .small.text-muted
+    = row.bzdm
+    = row.yjsj.strftime('%Y%m%d %H:%M') if row.yjsj.present?
+    .pull-right
+      - if row.qhsj.present?
+        = row.qhsj.strftime('%Y%m%d %H:%M')
+      - else
+        %b.text-danger
+          - if row.qhzt.eql?('2')
+            當前簽核者
+          - else
+            .text-muted
+              還未簽核
+  - if row.qhnr.present?
+    .well.well-sm
+      = row.qhnr.html_safe if row.qhnr.present?
+      - if row.qhfd.present?
+        %div
+          = download_imes_file(row.qhfd)
+  - else
+    %br
+
+- qh_bdlcs.sort_by(& :bzdm).select{|b| b.ysyh.eql?(current_user.email.split('@').first.upcase) and b.qhzt.eql?('2')}.each do |row|
+  .panel.panel-default
+    .panel-heading
+      = row.ysyh
+      .pull-right
+        = "[審核]" if row.qhlx.eql?('R')
+        = "[知會]" if row.qhlx.eql?('I')
+        %b.text-primary
+          = "[核准]" if row.qhlx.eql?('A')
+    .panel-body
+      = simple_form_for(row, html: { multipart: true }) do |f|
+        = f.error_notification
+
+        .form-inputs
+          .form-group
+            = file_field_tag 'file', class: 'file-input-wrapper btn-lg'
+
+          - unless row.qhlx.eql?('I')
+            .form-group#typeahead-form-group
+              %label.control-label
+                會簽/知會者
+              %textarea.typeahead-input.form-control#typeahead-input{name:'email', autocomplete:'off', placeholder:'輸入前3個字母后,從清單選擇會簽人',data:{provide:'typeahead'}}
+
+          = f.input :qhnr, label: '批示內容', as: :text, input_html:{name:'qhnr', autocomplete:'off'}
+
+          %label.control-label
+            批示結果
+          .form-group
+            .btn-group.btn-group-lg{data:{toggle:'buttons'}}
+              %label.btn.btn-default
+                %input#qhjg1{type:'radio', name:'qhjg', autocomplete:'off', value:'Y'}
+                  %b.text-success
+                    - if row.qhlx.eql?('I')
+                      知悉
+                    - else
+                      核准
+              - unless row.qhlx.eql?('I')
+                %label.btn.btn-default#label-qhjq3
+                  %input#qhjg3{type:'radio', name:'qhjg', autocomplete:'off', value:'H'}
+                    %b
+                      會簽
+                %label.btn.btn-default
+                  %input#qhjg2{type:'radio', name:'qhjg', autocomplete:'off', value:'N'}
+                    %b.text-danger
+                      退件
+
+          = button_tag id:'submit-button', class: 'btn btn-default btn-lg', type: 'button', data:{loading_text: t('saving')} do
+            %span.glyphicon.glyphicon-floppy-save
+              %b.text-primary
+                提交審核內容
+
+:javascript
+  function extractor(query) {
+    var result = /([^,]+)$/.exec(query);
+    if(result && result[1])
+        return result[1].trim();
+    return '';
+  }
+
+  $(document).ready(function() {
+
+    $('input[type=file]').bootstrapFileInput();
+
+    $('#qhjg3').change(function(){
+      if ($('#typeahead-input').val()==''){
+        alert('請輸入會簽者郵件信息.');
+        $('#typeahead-input').focus();
+        return false;
+      }
+    });
+
+    $('#submit-button').click(function(){
+      if ($("input[name='qhjg']:radio:checked").length == 0){
+        alert('請選擇批示結果, 再按提交審核內容');
+        return false;
+      }
+      else if (($("input[name='qhjg']:radio:checked").val() == 'H') && ($('#typeahead-input').val()=='')){
+          alert('請輸入會簽者郵件信息.');
+          $('#typeahead-input').focus();
+          return false;
+      }
+      else{
+        $(this).button('loading');
+        this.form.submit();
+      }
+    });
+
+    $('.typeahead-input').keydown(function(evt){
+      var keycode = evt.which;
+      if (keycode  == 188) { //Enter key's keycode
+        return false;
+      }
+    });
+
+    $('.typeahead-input').typeahead({
+        minLength: 3,
+        items: 10,
+        autoSelect: false,
+        delay: 250,
+        source: function (query, process) {
+            if (query.split(',')[query.split(',').length - 1].length > 2){
+              return $.get('/selects/user?q=' + query, function (data) {
+                  return process(data);
+              });
+            }
+        },
+        updater: function(item) {
+            return this.$element.val().replace(/[^,]*$/,'')+item+',';
+        },
+        matcher: function (item) {
+          var tquery = extractor(this.query);
+          if(!tquery) return false;
+          return ~item.toLowerCase().indexOf(tquery.toLowerCase())
+        },
+        highlighter: function (item) {
+          var query = extractor(this.query).replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+          return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+            return '<strong>' + match + '</strong>'
+          })
+        }
+    });
+  })

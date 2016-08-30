@@ -1,0 +1,150 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    %div
+      = @imes_q001h.bdbh
+      .pull-right
+        = @imes_q001h.bdrq
+    %div
+      = @imes_q001h.lflb.upcase if @imes_q001h.lflb.present?
+    %div
+      = @imes_q001h.lfdw
+  .panel-heading
+    .panel-title
+      = @imes_q001h.imes_qh_bdtx.bdtx
+  .panel-body
+    %p
+      = @imes_q001h.bdyy
+
+    %table.table.table-bordered
+      %tr
+        %th= "來訪擔當"
+        %td= @imes_q001h.lfdd
+      %tr
+        %th.text-nowrap= "預計到達時間"
+        %td
+          = @imes_q001h.ydrq
+          = @imes_q001h.ydsj
+      %tr
+        %th= "預計離開時間"
+        %td
+          = @imes_q001h.ylrq
+          = @imes_q001h.ylsj
+      %tr
+        %th= "實際到達時間"
+        %td
+          = @imes_q001h.sdrq
+          = @imes_q001h.sdsj
+      %tr
+        %th= "實際离开時間"
+        %td
+          = @imes_q001h.slrq
+          = @imes_q001h.slsj
+      %tr
+        %th= "來訪目的"
+        %td= @imes_q001h.lfmd
+      %tr
+        %th= "陪伴人員"
+        %td= @imes_q001h.pbry.gsub(',',', ') if @imes_q001h.pbry.present?
+      %tr
+        %th= "高階主管"
+        %td= @imes_q001h.gjzg.gsub(',',', ') if @imes_q001h.gjzg.present?
+      %tr
+        %th= "會前會時間"
+        %td= @imes_q001h.hqsj
+      %tr
+        %th= "備註"
+        %td= @imes_q001h.bezu
+      %tr
+        %th= "會簽用戶"
+        %td= @imes_q001h.hqyh.gsub(',',', ') if @imes_q001h.hqyh.present?
+
+    - if @imes_q001h.imes_q001ls.present?
+      %p
+        %a{onclick: "$('#items').toggle();"}
+          %b
+            顯示拜訪人明細
+
+      %div.details#items{style:"display:none"}
+        - i = 0
+        - @imes_q001h.imes_q001ls.sort_by(& :sqnr).each do |q001ls|
+        - i = i+1
+          %table.table.table-bordered
+            %tr
+              %th
+                = '拜訪者'
+                = "#{i}"
+              %td
+                = q001ls.lfxm
+                = q001ls.sex.eql?('M') ? '(男)' : '(女)' if q001ls.sex.present?
+            %tr
+              %th= q001ls.zjlx
+              %td= q001ls.zjhm
+            %tr
+              %th= '電話'
+              %td= q001ls.lfdh
+            %tr
+              %th= '職位'
+              %td= q001ls.lfzw
+            %tr
+              %th= '到達時間'
+              %td
+                = q001ls.sdrq
+                = q001ls.sdsj
+            %tr
+              %th= '離開時間'
+              %td
+                = q001ls.slrq
+                = q001ls.slsj
+    %p
+    - if @imes_q001h.bdfd.present?
+      = download_imes_file(@imes_q001h.bdfd)
+
+%a{onclick: "$('#admin').toggle();"}
+  %b
+    顯示總務注意事項
+%div.details#admin{style:"display:none"}
+  %table.table.table-bordered
+    %tr
+      %th= '進場方式'
+      %td= @imes_q001h.jcfs_text
+    %tr
+      %th= '接送地點'
+      %td= @imes_q001h.jsdd
+    %tr
+      %th= '拜訪人數'
+      %td= @imes_q001h.bfrs
+    %tr
+      %th= '就餐地點'
+      %td= @imes_q001h.jcdd_text
+    %tr
+      %th= '就餐時間'
+      %td= @imes_q001h.jcsj
+    %tr
+      %th= '就餐人數'
+      %td= @imes_q001h.jcry
+    %tr
+      %th= '就餐費用'
+      %td= @imes_q001h.fygs
+    %tr
+      %th= '住宿安排'
+      %td= @imes_q001h.zsap_text
+    %tr
+      %th= '住宿天數'
+      %td= @imes_q001h.zsts
+    %tr
+      %th= '資源準備'
+      %td= @imes_q001h.hyzy_text(@imes_q001h.hyzy) if @imes_q001h.hyzy.present?
+    %tr
+      %th= '型錄份數'
+      %td= @imes_q001h.xlfs.to_i if @imes_q001h.xlfs.present?
+    %tr
+      %th= '其他資源'
+      %td= @imes_q001h.qtzy_text(@imes_q001h.qtzy) if @imes_q001h.qtzy.present?
+    %tr
+      %th= '總務備註'
+      %td= @imes_q001h.zwbz
+
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_q001h.imes_qh_bdlcs}
+

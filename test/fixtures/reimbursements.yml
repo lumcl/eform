@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  bukrs: MyString
+  belnr: MyString
+  gjahr: MyString
+  blart: MyString
+  budat: 2015-11-13
+  bldat: 2015-11-13
+  waers: MyString
+  subject: MyString
+  body: MyText
+  approved: false
+  status: MyString
+  deleted: false
+  owner_id: 1
+  creator_id: 1
+  updater_id: 1
+  creator_ip: MyString
+  updater_ip: MyString
+  uuid: MyString
+
+two:
+  name: MyString
+  bukrs: MyString
+  belnr: MyString
+  gjahr: MyString
+  blart: MyString
+  budat: 2015-11-13
+  bldat: 2015-11-13
+  waers: MyString
+  subject: MyString
+  body: MyText
+  approved: false
+  status: MyString
+  deleted: false
+  owner_id: 1
+  creator_id: 1
+  updater_id: 1
+  creator_ip: MyString
+  updater_ip: MyString
+  uuid: MyString

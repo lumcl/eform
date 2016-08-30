@@ -1,0 +1,29 @@
+- if object.bdfd.blank? and object.new_record?.eql?(false)
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        文件上傳 / File Upload
+    .panel-body
+      = form_tag(bd_file_upload_imes_file_uploaders_path, method: 'post', multipart: true) do
+        = hidden_field_tag 'imes_action', 'Document'
+        = hidden_field_tag 'gsdm', object.gsdm
+        = hidden_field_tag 'bddm', object.bddm
+        = hidden_field_tag 'bdbh', object.bdbh
+
+        .form-group
+          .col-xs-12
+            = label_tag 'file', '先從文件夾選擇上傳文件 / Select upload file from file folder'
+          .col-xs-12
+            = file_field_tag 'file'
+            %p
+            %p
+              一個表單只允許任何一個文件格式上傳 Only allow single file upload per form.
+
+        .form-group
+          .col-xs-12
+            = button_tag id:'submit-file', class: 'btn btn-default btn-submit' do
+              %span.glyphicon.glyphicon-floppy-save
+              %b.text-primary
+                保存上傳文件 Upload File
+
+

@@ -1,0 +1,91 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    %div
+      = "公司代碼"
+      .tab-1
+        = @imes_d300h.gsdm
+    %div
+      = "表單代碼"
+      .tab-1
+        = @imes_d300h.bddm
+    %div
+      = "表單編號"
+      .tab-1
+        = @imes_d300h.bdbh
+    %div
+      = "表單日期"
+      .tab-1
+        = @imes_d300h.bdrq
+    %div
+      = "派工類型"
+      .tab-1
+        - if @imes_d300h.qclx.eql?('1')
+          = "1. 欠料"
+        - elsif @imes_d300h.qclx.eql?('2')
+          = "2. 品質異常"
+        - elsif @imes_d300h.qclx.eql?('3')
+          = "3. 材料異常"
+        - elsif @imes_d300h.qclx.eql?('4')
+          = "4. 試產異常"
+        - elsif @imes_d300h.qclx.eql?('5')
+          = "5. 樣品異常"
+        - elsif @imes_d300h.qclx.eql?('6')
+          = "6. 其他異常"
+    %div
+      = "MO編號"
+      .tab-1
+        = @imes_d300h.mobm
+    %div
+      = "生產單位代碼"
+      .tab-1
+        = @imes_d300h.bmmc
+    %div
+      = "生產單位名稱"
+      .tab-1
+        = @imes_d300h.scdw
+    %div
+      = "上線日期"
+      .tab-1
+        = @imes_d300h.sxrq
+    %div
+      = "訂單數量"
+      .tab-1
+        = @imes_d300h.ddsl
+    %div
+      = "客戶編碼"
+      .tab-1
+        = @imes_d300h.khbm
+    %div
+      = "客戶名稱"
+      .tab-1
+        = @imes_d300h.khmc
+    %div
+      = "設計編號"
+      .tab-1
+        = @imes_d300h.sjbh
+    %div
+      = "出貨日期"
+      .tab-1
+        = @imes_d300h.chrq
+    %div
+      = "表單編號"
+      .tab-1
+        = @imes_d300h.bdbh
+    %div
+      = "申請人"
+      .tab-1
+        = @imes_d300h.sqyh
+  .panel-heading
+    .panel-title
+      = "異動原因"
+  .panel-heading
+    .panel-title
+      = @imes_d300h.qcnr.html_safe
+  .panel-body
+    %p
+    - if @imes_d300h.bdfd.present?
+      = download_imes_file(@imes_d300h.bdfd)
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d300h.imes_qh_bdlcs}
+

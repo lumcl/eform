@@ -1,0 +1,88 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    %div
+      = "公司代碼"
+      .tab-1
+      = @imes_d888h.gsdm
+    %div
+      = "表單代碼"
+      .tab-1
+      = @imes_d888h.bddm
+    %div
+      = "表單編號"
+      .tab-1
+      = @imes_d888h.bdbh
+    %div
+      = "表單日期"
+      .tab-1
+      = @imes_d888h.bdrq
+    %div
+      = "出廠類型"
+      .tab-1
+      = @imes_d888h.cclx
+    %div
+      = "財產編號"
+      .tab-1
+      = @imes_d888h.ccbh
+    %div
+      = "領料編號"
+      .tab-1
+      = @imes_d888h.llbh
+    %div
+      = "供應商"
+      .tab-1
+      = @imes_d888h.gysm
+    %div
+      = "部門代碼"
+      .tab-1
+      = @imes_d888h.bmbh
+    %div
+      = "部門名稱"
+      .tab-1
+      = @imes_d888h.bmmc
+    %div
+      = "總金額"
+      .tab-1
+      = @imes_d888h.zje
+    %div
+      = "跟蹤"
+      .tab-1
+      = @imes_d888h.bdgz
+    %div
+      = "退料編號"
+      .tab-1
+      = @imes_d888h.tlbh
+    %div
+      = "物料編號"
+      .tab-1
+      = @imes_d888h.wlbh
+    %div
+      = "訂單編號"
+      .tab-1
+      = @imes_d888h.ddbh
+    %div
+      = "核准者"
+      .tab-1
+      = @imes_d888h.qhyh
+    %div
+      = "核准時間"
+      .tab-1
+      = @imes_d888h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d888h.qhsj.present?
+    %div
+      = "申請人"
+      .tab-1
+      = @imes_d888h.sqyh
+  .panel-heading
+    .panel-title
+      = "故障原因"
+  .panel-heading
+    .panel-title
+      = @imes_d888h.ccnr.html_safe
+  .panel-body
+    %p
+    - if @imes_d888h.bdfd.present?
+      = download_imes_file(@imes_d888h.bdfd)
+    %hr
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d888h.imes_qh_bdlcs}
+

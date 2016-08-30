@@ -1,0 +1,29 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    .row.small
+      .col-xs-6
+        = @imes_d400h.bdbh
+      .col-xs-6.text-right
+        = @imes_d400h.bdrq
+      .col-xs-6
+        = @imes_d400h.sqyh
+      .col-xs-6.text-right
+        = @imes_d400h.bmmc
+      .col-xs-4
+        = @imes_d400h.qclx
+      .col-xs-4.text-center
+        = @imes_d400h.wjsx
+      .col-xs-4.text-right
+        = @imes_d400h.wjjm
+  .panel-heading
+    .panel-title
+      = @imes_d400h.qcay
+  .panel-body
+    %p
+      = @imes_d400h.qcnr1.html_safe
+    - if @imes_d400h.bdfd.present?
+      = download_imes_file(@imes_d400h.bdfd)
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d400h.imes_qh_bdlcs}
+
