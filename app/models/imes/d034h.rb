@@ -100,6 +100,15 @@ class Imes::D034h < Imesdb
 
   def after_rejected
     after_rfc Saprfc::BapiSalesOrderChange.reason_code(vbeln, '06')
+    list = Imes::QhBdlc.where(bdbh: bdbh).where("qhzt < 3").where("qhlx <> 'Z'")
+    list.each do |row|
+        row.qhzt = '9'
+        row.qhyh = 'SYSTEM'
+        row.qhnr = '退件/Rejected'
+        row.qhjg = 'N'
+        row.qhsj = Time.now
+        row.save
+    end
   end
 
   def after_rfc(rfc_messages)
