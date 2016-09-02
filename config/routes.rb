@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :imes do
+    resources :d238hs
+  end
+  namespace :imes do
 
     resources :file_uploaders do
       post :bd_file_upload, on: :collection
