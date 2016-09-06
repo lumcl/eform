@@ -18,6 +18,7 @@ class Imes::D238hsController < ApplicationController
     @imes_d238h.apply_date = Time.now
     @imes_d238h.bdrq = Time.now
     @imes_d238h.bddm = 'D238'
+    @imes_d238h.applicant = current_user.email.split('@').first.upcase
   end
 
   def tooling

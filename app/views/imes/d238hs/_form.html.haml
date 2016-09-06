@@ -5,7 +5,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :required_department
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :applicant
+      = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase}
     .col-xs-12.col-sm-6.col-md-4
       = f.input :sro_no
     .col-xs-12.col-sm-6.col-md-4
