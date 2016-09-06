@@ -4,8 +4,11 @@ class Imes::D238h < Imesdb
 
   validates_presence_of :company_site, :apply_date
 
-  def create_record
-    Imes::D238h.before_save
+  before_create  :zbefore_create
 
+  def zbefore_create
+    self.bdbh = 'TX-D238-1600001'
+    self.bddm = 'D238'
   end
+
 end
