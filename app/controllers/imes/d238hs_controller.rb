@@ -15,6 +15,12 @@ class Imes::D238hsController < ApplicationController
   # GET /imes/d238hs/new
   def new
     @imes_d238h = Imes::D238h.new
+    @imes_d238h.apply_date = Time.now
+    @imes_d238h.bdrq = Time.now
+    @imes_d238h.bddm = 'D238'
+  end
+
+  def tooling
   end
 
   # GET /imes/d238hs/1/edit
