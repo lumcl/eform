@@ -178,7 +178,7 @@ en:
     disty: '代理商'
     maker: '原廠備註'
     filename: '檔案名稱'
-    
+
     company_site: '公司 Company Site'
     required_department: '部門 Required Department'
     applicant: '提出者 Applicant'
@@ -191,9 +191,9 @@ en:
     beneficiary: '費用歸屬 Beneficiary'
     charge_code: '費用歸屬代碼 Charge Code'
     electronic_engineer: '電子工程師 Electronic engineer'
-    electronic_engineer_ext: '電子工程師/分機 Electronic engineer / ext.'
+    electronic_engineer_ext: '電子工程師/分機 Electronic engineer/ext.'
     mechanical_engineer: '機構工程師ID Mechanical engineer'
-    mechanical_engineer_ext: '機構工程師分機 Mechanical engineer / ext.'
+    mechanical_engineer_ext: '機構工程師分機 Mechanical engineer/ext.'
     cavity_quantity: '模穴數量 Cavity Quantity'
     tooling_life: '模具壽命 Tooling Life'
     ee_spec: '電氣規格 EE Spec'

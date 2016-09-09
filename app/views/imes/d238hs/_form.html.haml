@@ -65,7 +65,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :required_sample_color
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :production_site
+      = f.collection_check_boxes :production_site, [['1', '東莞立德廠'] ,['2', '東莞領航廠'],['3', '江蘇領先廠'],['4', '菲律賓廠']], :first, :last
     .col-xs-12.col-sm-6.col-md-4
       = f.input :new_tooling_proposal
     .col-xs-12.col-sm-6.col-md-4

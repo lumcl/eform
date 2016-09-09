@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :imes do
+    resources :qh_bdbhs
+  end
+  namespace :imes do
 
     resources :d238hs do
       post :str_qhlc, on: :collection
