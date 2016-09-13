@@ -1,0 +1,15 @@
+= simple_form_for(@imes_qh_bdbh) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :gsdm
+    = f.input :bddm
+    = f.input :bdyr
+    = f.input :bdqz
+    = f.input :bdhm
+
+  .form-actions
+    .clearfix
+    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+      %span.glyphicon.glyphicon-floppy-save
+      = t('save')

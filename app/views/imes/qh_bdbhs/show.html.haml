@@ -1,0 +1,12 @@
+%h3= t('attributes.imes_qh_bdbh')
+%h5
+  = link_to t('edit'), edit_imes_qh_bdbh_path(@imes_qh_bdbh)
+  \|
+  = link_to t('back'), imes_qh_bdbhs_path
+
+= render partial: 'layouts/show', :locals => {object: @imes_qh_bdbh}
+
+%h5
+  = link_to t('edit'), edit_imes_qh_bdbh_path(@imes_qh_bdbh)
+  \|
+  = link_to t('back'), imes_qh_bdbhs_path

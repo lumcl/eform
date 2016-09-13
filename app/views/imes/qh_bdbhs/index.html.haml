@@ -1,0 +1,38 @@
+%h3= t('attributes.imes_qh_bdbh')
+
+%h5
+  = link_to t('new_imes_qh_bdbh'), new_imes_qh_bdbh_path
+
+= form_tag(imes_qh_bdbhs_url, method: 'get', class: 'form-inline') do
+  = text_field_tag :name, nil, placeholder: t('attributes.name'), class: 'form-control input-sm', value: params[:name]
+  = button_tag class: 'btn btn-success btn-form-submit', type: 'button' do
+    %span.glyphicon.glyphicon-search
+
+.table-responsive
+  %table.table.table-hover.table-condensed.table-bordered
+    %thead
+      %tr
+        %th= t('action')
+        %th= t('attributes.gsdm')
+        %th= t('attributes.bddm')
+        %th= t('attributes.bdyr')
+        %th= t('attributes.bdqz')
+        %th= t('attributes.bdhm')
+    %tbody
+      - @imes_qh_bdbhs.each do |imes_qh_bdbh|
+        %tr
+          %td
+            = link_to t('edit'), edit_imes_qh_bdbh_path(imes_qh_bdbh)
+            |
+            = link_to t('delete'), imes_qh_bdbh, :method => :delete, :data => { :confirm => t('confirm_delete')}
+
+          %td= imes_qh_bdbh.gsdm
+          %td= imes_qh_bdbh.bddm
+          %td= imes_qh_bdbh.bdyr
+          %td= imes_qh_bdbh.bdqz
+          %td= imes_qh_bdbh.bdhm
+
+%h5
+  = link_to t('new_imes_qh_bdbh'), new_imes_qh_bdbh_path
+
+= paginate @imes_qh_bdbhs unless @imes_qh_bdbhs.empty?

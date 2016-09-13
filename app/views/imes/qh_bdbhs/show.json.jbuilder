@@ -1,0 +1,1 @@
+json.partial! "imes_qh_bdbhs/imes_qh_bdbh", imes_qh_bdbh: @imes_qh_bdbh

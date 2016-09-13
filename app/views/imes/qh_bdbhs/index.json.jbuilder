@@ -1,0 +1,1 @@
+json.array! @imes_qh_bdbhs, partial: 'imes_qh_bdbhs/imes_qh_bdbh', as: :imes_qh_bdbh
