@@ -22,8 +22,29 @@ class Imes::D238hsController < ApplicationController
   end
 
   def tooling
+    imes_d238h = Imes::D238h.find(params[:bdbh])
   end
 
+  def print
+    socket = TCPSocket.new('172.91.39.42','9100')
+    socket.write('^XA~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR4,4~SD30^JUS^LRN^CI0^XZ
+^XA
+^MMT
+^PW900
+^LL0150
+^LS0
+^FT449,134^A0N,28,50^FH\^FD1609300003^FS
+^FT142,134^A0N,28,50^FH\^FD1609300003^FS
+^FT449,92^A0N,33,31^FH\^FD1637^FS
+^FT142,92^A0N,33,31^FH\^FD1637^FS
+^FT449,49^A0N,37,24^FH\^FD0504000860000^FS
+^FT142,49^A0N,37,24^FH\^FD0504000860000^FS
+^PQ1,0,1,Y^XZ')
+    socket.close
+
+    redirect_to print_imes_d238hs_path, notice: 'SO號碼不存在或者狀態不對, 請重新輸入'
+  end
+  
   # GET /imes/d238hs/1/edit
   def edit
   end
@@ -47,8 +68,8 @@ class Imes::D238hsController < ApplicationController
   # PATCH/PUT /imes/d238hs/1.json
   def update
     respond_to do |format|
-      if @imes_d238h.update(imes_d238h_params)
-        format.html { redirect_to @imes_d238h, notice: 'D238h was successfully updated.' }
+      if @imes_d238h.update(imes_d238h_params) #@imes_d238h, notice: 'D238h was successfully updated.'
+        format.html { redirect_to tooling_imes_d238hs_path }
         format.json { render :show, status: :ok, location: @imes_d238h }
       else
         format.html { render :edit }

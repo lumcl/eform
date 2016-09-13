@@ -9,9 +9,24 @@ class Imes::D238h < Imesdb
   before_update :zbefore_update
 
   def zbefore_create
+    #sql = "select bdqz,bdhm from qh_bdbh where gsdm = '"+self.company_site+"' and bddm = 'D238' and bdyr= '"+DateTime.parse(Time.now.to_s).strftime('%Y').to_s+"' "
+    @imes_qh_bdbhs = Imes::QhBdbh.find_by(gsdm: self.company_site,bddm:'D238', bdyr: DateTime.parse(Time.now.to_s).strftime('%Y').to_s) #.find_by_sql(sql)
+
     self.bdrq = DateTime.now
-    self.bdbh = 'TX-D238-1600003'
+    puts @imes_qh_bdbhs.bdqz
+    puts '\n'
+    puts '**************'
+    self.bdbh = @imes_qh_bdbhs.bdqz.to_s+(@imes_qh_bdbhs.bdhm+1).to_s
+    puts self.bdbh
     self.bddm = 'D238'
+
+    bdhm = @imes_qh_bdbhs.bdhm
+
+    @imes_qh_bdbhs.bdhm = bdhm +1
+    puts '________************_________'
+    puts @imes_qh_bdbhs.bdhm
+    puts '________************_________'
+    #@imes_qh_bdbhs.save
   end
 
   def zbefore_update
