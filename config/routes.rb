@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
     resources :d238hs do
       post :str_qhlc, on: :collection
-      post :tooling, on: :collection
+      get :tooling, on: :collection
       get :print, on: :collection
+      get :printend, on: :collection
     end
 
     resources :file_uploaders do

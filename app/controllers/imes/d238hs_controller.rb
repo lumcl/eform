@@ -10,6 +10,13 @@ class Imes::D238hsController < ApplicationController
   # GET /imes/d238hs/1
   # GET /imes/d238hs/1.json
   def show
+    if params[:bdbh] = 'tooling'
+        redirect_to tooling_imes_d238hs_path, notice: 'SO號碼不存在或者狀態不對, 請重新輸入'
+    end
+
+    if params[:bdbh] = 'print'
+      redirect_to printend_imes_d238hs_url
+    end
   end
 
   # GET /imes/d238hs/new
@@ -22,7 +29,7 @@ class Imes::D238hsController < ApplicationController
   end
 
   def tooling
-    imes_d238h = Imes::D238h.find(params[:bdbh])
+    #imes_d238h = Imes::D238h.find(params[:bdbh])
   end
 
   def print
@@ -42,7 +49,10 @@ class Imes::D238hsController < ApplicationController
 ^PQ1,0,1,Y^XZ')
     socket.close
 
-    redirect_to print_imes_d238hs_path, notice: 'SO號碼不存在或者狀態不對, 請重新輸入'
+    redirect_to printend_imes_d238hs_url
+  end
+
+  def printend
   end
   
   # GET /imes/d238hs/1/edit
