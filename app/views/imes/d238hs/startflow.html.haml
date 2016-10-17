@@ -1,0 +1,83 @@
+%h3= "立德电子模具需求申请表 Leader Electronics Tooling Application"
+
+%h5
+  = link_to t('back'), imes_d238hs_path
+
+= render 'form'
+
+- if @imes_d238h.bdzt.blank?
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        設置簽核人員 Approval
+    .panel-body
+      - if @user_error.present?
+        .well.text-danger= @user_error
+
+      = form_tag(str_qhlc_imes_d238hs_path, method: 'post') do
+        = hidden_field_tag 'sbm', 'X'
+        = hidden_field_tag 'bdbh', @imes_d238h.bdbh
+        .form-group.col-xs-12
+          %label{for: 'bdnr'}表單內容 Remark
+          %textarea.form-control#bdnr{name:'bdnr', autocomplete:'off'}
+            = params[:bdnr]
+
+        .form-group.col-xs-12
+          %label{for: 'shenhe'}審核人員 Reviewer
+          %textarea.typeahead-input.form-control#shenhe{name:'shenhe', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:shenhe]
+
+        .form-group.col-xs-12.has-error
+          %label{for: 'hezhun'}核准人 Approver
+          = text_field_tag 'hezhun', params[:hezhun] || Imes::D238z.approver(@imes_d238h.ernam), class: 'typeahead-input form-control', data:{provide:'typeahead'}
+
+
+        .form-group.col-xs-12.col-sm-4
+          %label{for: 'caigou'}採購主管 Pur Mgr
+          %textarea.typeahead-input.form-control#caigou-input{name:'caigou', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:caigou] || @imes_d238h.imes_d238lz.caigou
+
+        .form-group.col-xs-12.col-sm-4
+          %label{for: 'shengguan'}生管主管 PMC Mgr
+          %textarea.typeahead-input.form-control#shengguan{name:'shengguan', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:shengguan] || @imes_d238h.imes_d238lz.shengguan
+
+        .form-group.col-xs-12.col-sm-4
+          %label{for: 'wenyuan'}生管文員 PMC
+          %textarea.typeahead-input.form-control#wenyuan{name:'wenyuan', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:wenyuan] || @imes_d238h.imes_d238lz.wenyuan
+
+        .form-group.col-xs-12
+          %label{for: 'zhihui'}知會人員 Inform
+          %textarea.typeahead-input.form-control#zhihui{name:'zhihui', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:zhihui] || @imes_d238h.imes_d238lz.zhihui
+
+        .form-group.col-xs-12
+          = button_tag id:'submit-button', class: 'btn btn-default btn-lg', type: 'button', data:{loading_text: t('saving')} do
+            %span.glyphicon.glyphicon-floppy-save
+            %b.text-primary
+              啟動審核流程 Start Flow
+- else
+  .h3.text-danger
+    簽核流程已經啟動. Approval process had been started!
+
+:javascript
+  function extractor(query) {
+    var result = /([^,]+)$/.exec(query);
+    if(result && result[1])
+        return result[1].trim();
+    return '';
+  }
+
+  $(document).ready(function() {
+
+    $('#submit-button').click(function(){
+      if ($('#hezhun').val() == ''){
+        alert('核准人不的為空! Approval cannot be blank!')
+      }else{
+        $(this).button('loading');
+        this.form.submit();
+      }
+    });
+
+  })

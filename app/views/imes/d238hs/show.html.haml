@@ -1,12 +1,3 @@
-%h3= "立德电子模具需求申请表 Leader Electronics Tooling Application"
-%h5
-  = link_to t('edit'), edit_imes_d238h_path(@imes_d238h)
-  \|
-  = link_to t('back'), imes_d238hs_path
-
-= render partial: 'layouts/show', :locals => {object: @imes_d238h}
-
-%h5
-  = link_to t('edit'), edit_imes_d238h_path(@imes_d238h)
-  \|
-  = link_to t('back'), imes_d238hs_path
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+= render 'd238h'
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d238h.imes_qh_bdlcs}

@@ -184,3 +184,10 @@
     = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
       %span.glyphicon.glyphicon-floppy-save
       = t('save')
+
+
+
+= render partial: 'layouts/bd_file_upload_form', locals: {object: @imes_d238h}
+
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d238h.imes_qh_bdlcs}
