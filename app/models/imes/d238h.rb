@@ -34,10 +34,10 @@ class Imes::D238h < Imesdb
     imes_qh_bdbhs.bdhm = new_bdhm
     imes_qh_bdbhs.save
 
-    self.bdrq = Time.now.strftime("%Y%m%d")
+    self.bdrq = Time.now
     self.gsdm = company_site
     self.bdzt = 0
-    self.bdbh = "#{imes_qh_bdbhs.bdqz}-#{new_bdhm}"
+    self.bdbh = "#{imes_qh_bdbhs.bdqz}#{new_bdhm}"
     self.bddm = 'D238'
   end
 
