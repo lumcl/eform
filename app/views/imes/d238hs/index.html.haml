@@ -13,7 +13,7 @@
     %thead
       %tr
         %th= t('action')
-        %th= t('attributes.company_site')
+        %th= 'BDBH'
         %th= t('attributes.required_department')
         %th= t('attributes.applicant')
         %th= t('attributes.sro_no')
@@ -32,7 +32,7 @@
             |
             = link_to t('delete'), imes_d238h, :method => :delete, :data => { :confirm => t('confirm_delete')}
 
-          %td= imes_d238h.company_site
+          %td= imes_d238h.bdbh
           %td= imes_d238h.required_department
           %td= imes_d238h.applicant
           %td= imes_d238h.sro_no

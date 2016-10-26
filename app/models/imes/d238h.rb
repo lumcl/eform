@@ -15,6 +15,20 @@ class Imes::D238h < Imesdb
 
   def zbefore_create
     #sql = "select bdqz,bdhm from qh_bdbh where gsdm = '"+self.company_site+"' and bddm = 'D238' and bdyr= '"+DateTime.parse(Time.now.to_s).strftime('%Y').to_s+"' "
+  end
+
+  def zbefore_update
+  end
+
+  def zbefore_save
+    assign_bdbh if bdbh.blank?
+  end
+
+  def production_sites
+    eval(production_site)
+  end
+
+  def assign_bdbh
     imes_qh_bdbhs = Imes::QhBdbh.find_by(gsdm: self.company_site,bddm:'D238', bdyr: Date.today.strftime('%Y'))
     new_bdhm = imes_qh_bdbhs.bdhm + 1
     imes_qh_bdbhs.bdhm = new_bdhm
@@ -27,13 +41,4 @@ class Imes::D238h < Imesdb
     self.bddm = 'D238'
   end
 
-  def zbefore_update
-  end
-
-  def zbefore_save
-  end
-
-  def production_sites
-    eval(production_site)
-  end
 end
