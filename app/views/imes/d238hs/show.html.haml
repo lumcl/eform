@@ -1,3 +1,4 @@
 = link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
 = render 'd238h'
-= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d238h.imes_qh_bdlcs}
+/if @imes_d238h.imes_qh_bdlcs.blank?
+/   = render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d238h.imes_qh_bdlcs}
