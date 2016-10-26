@@ -15,12 +15,12 @@ class Imes::D238h < Imesdb
 
   def zbefore_create
     #sql = "select bdqz,bdhm from qh_bdbh where gsdm = '"+self.company_site+"' and bddm = 'D238' and bdyr= '"+DateTime.parse(Time.now.to_s).strftime('%Y').to_s+"' "
-    imes_qh_bdbhs = Imes::QhBdbh.find_by(gsdm: self.company_site,bddm:'D238', bdyr: Date.today.strftime('%Y')) 
+    imes_qh_bdbhs = Imes::QhBdbh.find_by(gsdm: self.company_site,bddm:'D238', bdyr: Date.today.strftime('%Y'))
     new_bdhm = imes_qh_bdbhs.bdhm + 1
     imes_qh_bdbhs.bdhm = new_bdhm
     imes_qh_bdbhs.save
 
-    self.bdrq = DateTime.now
+    self.bdrq = Time.now
     self.gsdm = self.company_site
     self.bdzt = 0
     self.bdbh = "#{imes_qh_bdbhs.bdqz}-#{new_bdhm}"
