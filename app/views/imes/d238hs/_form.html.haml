@@ -5,7 +5,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase}
+      = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase},readonly: true
     .col-xs-12.col-sm-6.col-md-4
       = f.input :sro_no
     .col-xs-12.col-sm-6.col-md-4
@@ -39,7 +39,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :power_application
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :currency
+      = f.input :currency, collection: ['USD','RMB','HKD','TWD','JPD']
     .col-xs-12.col-sm-6.col-md-4
       = f.input :target_price
     .col-xs-12.col-sm-6.col-md-4
@@ -49,7 +49,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :est_cost
     .col-xs-12.col-sm-6.col-md-4
-      - if @imes_d238h.gross_profit < 0
+      - if @imes_d238h.gross_profit < 10
         = f.input :gross_profit, input_html:{style:'color:red;'}
       - else
         = f.input :gross_profit
@@ -204,15 +204,6 @@
 :javascript
     $(document).ready(function() {
 
-    $('#submit-button').click(function(){
-      if ($('#hezhun').val() == ''){
-        alert('核准人不的為空! Approval cannot be blank!')
-      }else{
-        $(this).button('loading');
-        this.form.submit();
-      }
-    });
-
     $('#imes_d238h_customer_id').change(function(){
       $.ajax({
         url: '/imes/d238hs/get_customer_name',
@@ -221,26 +212,35 @@
     });
 
     $('#imes_d238h_gross_profit').change(function(){
-      if ($('#imes_d238h_gross_profit').val() == '0'){
-        alert('核准人不的為空! Approval cannot be blank!')
+      if ($('#imes_d238h_gross_profit').val() == ''){
+        //alert('核准人不的為空! Approval cannot be blank!')
       }else{
-        alert('sss')
+       // alert('sss')
       }
     });
 
-    $('#imes_d238h_gross_profit').change(function(){
-      if ($('#imes_d238h_gross_profit').val() == '0'){
-        alert('核准人不的為空! Approval cannot be blank!')
-      }else{
-        alert('sss')
+    $('#imes_d238h_target_price').change(function(){
+      alert('target_price'+$('#imes_d238h_target_price').val())
+      //var tar_price = 0
+      //var est_cost = 0
+      if !($('#imes_d238h_target_price').val() == ''){
+          alert('sss')
+          tar_price = $('#imes_d238h_target_price').val()
+      }
+      if !($('#imes_d238h_est_cost').val() == ''){
+          est_cost = $('#imes_d238h_est_cost').val()
+      }
+      if (tar_price != 0 ){
+         //$('#imes_d238h_est_cost').val =  (tar_price - est_cost ) / tar_price *100
       }
     });
 
-    $('#imes_d238h_gross_profit').change(function(){
-      if ($('#imes_d238h_gross_profit').val() == '0'){
-        alert('核准人不的為空! Approval cannot be blank!')
-      }else{
-        alert('sss')
+    $('#imes_d238h_est_cost').change(function(){
+      alert('est_cost'+$('#imes_d238h_est_cost').val())
+      if ($('#imes_d238h_est_cost').val() == '0'){
+      //  alert('核准人不的為空! Approval cannot be blank!')
+      //}else{
+      //  alert('sss')
       }
     });
 
