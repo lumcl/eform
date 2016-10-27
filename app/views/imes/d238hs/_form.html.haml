@@ -21,7 +21,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :beneficiary
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :charge_code
+      = f.input :charge_code, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
     .col-xs-12.col-sm-6.col-md-4
       = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
     .col-xs-12.col-sm-6.col-md-4
