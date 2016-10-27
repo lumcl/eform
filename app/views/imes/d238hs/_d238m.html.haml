@@ -1,0 +1,52 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      工單信息 MO info
+  .panel-body
+    %a{onclick: "$('#d034m_form').toggle();"}
+      %b
+        維護工單 Maintain MO
+    %div.details#d034m_form{style: 'display:none'}
+      = simple_form_for(create_d2m_imes_d238hs_path, method: 'get', remote: true) do
+        = hidden_field_tag 'bdbh', @imes_d238h.bdbh
+        .row.small
+          .col-xs-6.col-sm-2
+            .form-group
+              %label{for: 'posnr'}Item
+              = select_tag('posnr', options_for_select(@imes_d034h.imes_d034ls.pluck(:posnr)), class: 'form-control input-sm')
+          .col-xs-6.col-sm-3
+            .form-group
+              %label{for: 'aufnr'}MO
+              = text_field_tag 'aufnr', '', class: 'form-control input-sm'
+          .col-xs-6.col-sm-2
+            .form-group
+              %label{for: 'strdate'}S/D
+              = text_field_tag 'strdate','', class: 'form-control input-sm'
+          .col-xs-6.col-sm-2
+            .form-group
+              %label{for: 'duedate'}D/D
+              = text_field_tag 'duedate', '', class: 'form-control input-sm'
+          .col-xs-6.col-sm-3
+            .form-group
+              %label 保存記錄 Save
+              %br
+              = button_tag "提交 Submit", data: { disable_with: "Please wait..." }, class: 'btn btn-default btn-sm'
+
+    .table-responsive
+      %table.table.table-bordered.table-condensed.small
+        %thead
+          %tr
+            %th.text-center Itm
+            %th.text-center MO
+            %th.text-center S/D
+            %th.text-center D/D
+            %th
+        %tbody
+          - @imes_d034h.imes_d034ms.sort_by{|t| [t.posnr, t.aufnr]}.each do |d034m|
+            %tr
+              %td.text-center= d034m.posnr
+              %td.text-center= d034m.aufnr
+              %td.text-center= d034m.strdate
+              %td.text-center= d034m.duedate
+              %td
+                = link_to '刪除 Dlt', destroy_d034m_imes_d034hs_path({uuid: d034m.uuid}), :data => { :confirm => t('confirm_delete')}, remote: true
