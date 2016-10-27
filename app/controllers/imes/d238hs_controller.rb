@@ -198,6 +198,27 @@ eJxjYBgFuICBBYQusEGjoeIKHFSxhhFKM+OgGbHTzIxtC8D0wf4PIJr9Z/8/CN1TD6KZNDq0G0A0Rwcz
     end
   end
 
+  def get_customer_name
+    customer_id = params[:customer_id]
+    customer_id = customer_id.upcase if customer_id.present?
+    sql = "select kunnr, name1 from sapsr3.kna1 where mandt='168' and kunnr=?"
+    rows = Sapdb.find_by_sql([sql, customer_id])
+    if rows.present?
+      render js: "
+                $('#imes_d238h_customer_id').val('#{rows.first.kunnr}');
+                $('#imes_d238h_customer_name').val('#{rows.first.name1}');
+               "
+    else
+      render js: "
+                $('#imes_d238h_customer_id').val('');
+                $('#imes_d238h_customer_name').val('');
+                alert('#{I18n.t('attributes.customer_id')} Error');
+                $('#imes_d238h_customer_id').focus();
+               "
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_imes_d238h

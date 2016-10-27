@@ -23,11 +23,11 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :charge_code
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :electronic_engineer
+      = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
     .col-xs-12.col-sm-6.col-md-4
       = f.input :electronic_engineer_ext
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :mechanical_engineer
+      = f.input :mechanical_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
     .col-xs-12.col-sm-6.col-md-4
       = f.input :mechanical_engineer_ext
     .col-xs-12.col-sm-6.col-md-4
@@ -211,6 +211,13 @@
         $(this).button('loading');
         this.form.submit();
       }
+    });
+
+    $('#imes_d238h_customer_id').change(function(){
+      $.ajax({
+        url: '/imes/d238hs/get_customer_name',
+        data: {customer_id: $('#imes_d238h_customer_id').val()}
+      })
     });
 
     $('#imes_d238h_gross_profit').change(function(){

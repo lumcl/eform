@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :startflow, on: :collection
       get :print, on: :collection
       get :printend, on: :collection
+      get :get_customer_name, on: :collection
     end
 
     resources :file_uploaders do
