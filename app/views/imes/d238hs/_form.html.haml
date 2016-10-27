@@ -198,4 +198,23 @@
 = render partial: 'layouts/bd_file_upload_form', locals: {object: @imes_d238h}
 
 :javascript
-  
+    $(document).ready(function() {
+
+    $('#submit-button').click(function(){
+      if ($('#hezhun').val() == ''){
+        alert('核准人不的為空! Approval cannot be blank!')
+      }else{
+        $(this).button('loading');
+        this.form.submit();
+      }
+    });
+
+    $('#imes_d238h_gross_profit').change(function(){
+      if ($('#imes_d238h_gross_profit').val() == '0'){
+        alert('核准人不的為空! Approval cannot be blank!')
+      }else{
+
+      }
+    });
+
+  })
