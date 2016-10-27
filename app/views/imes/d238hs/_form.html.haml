@@ -188,14 +188,18 @@
       %span.glyphicon.glyphicon-floppy-save
       = t('save')
 
-  = form_tag(startflow_imes_d238hs_path, method: 'get') do
-    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
-      %span.glyphicon.glyphicon-floppy-save
-        啟動審核流程 Start Flow
+  - if !@imes_d238h.bdbh.blank?
+    = form_tag(startflow_imes_d238hs_path, method: 'get') do
+      = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+        %span.glyphicon.glyphicon-floppy-save
+          啟動審核流程 Start Flow
 
 
 
 = render partial: 'layouts/bd_file_upload_form', locals: {object: @imes_d238h}
+
+
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d238h.imes_qh_bdlcs}
 
 :javascript
     $(document).ready(function() {
@@ -213,7 +217,7 @@
       if ($('#imes_d238h_gross_profit').val() == '0'){
         alert('核准人不的為空! Approval cannot be blank!')
       }else{
-
+        alert('sss')
       }
     });
 
