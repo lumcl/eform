@@ -3,7 +3,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :company_site, collection: ['L300','L210','L400','L111']
     .col-xs-12.col-sm-6.col-md-4
-      = f.input :required_department
+      = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
     .col-xs-12.col-sm-6.col-md-4
       = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase}
     .col-xs-12.col-sm-6.col-md-4
