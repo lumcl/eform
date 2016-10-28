@@ -50,9 +50,9 @@
       = f.input :est_cost
     .col-xs-12.col-sm-6.col-md-4
       - if @imes_d238h.gross_profit < 10
-        = f.input :gross_profit, input_html:{style:'color:red;'}
+        = f.input :gross_profit, input_html:{style:'color:red;'}, readonly: true
       - else
-        = f.input :gross_profit
+        = f.input :gross_profit, readonly: true
     .col-xs-12.col-sm-6.col-md-4
       = f.input :lei_drawing
     .col-xs-12.col-sm-6.col-md-4
