@@ -13,6 +13,8 @@ class Imes::D238h < Imesdb
 
   has_many :imes_qh_bdlcs, :class_name => 'Imes::QhBdlc', foreign_key: :bdbh, :dependent => :destroy
 
+  has_one :imes_d238lz, :class_name => 'Imes::D238z', foreign_key: :company_site, primary_key: :company_site
+
   def zbefore_create
     #sql = "select bdqz,bdhm from qh_bdbh where gsdm = '"+self.company_site+"' and bddm = 'D238' and bdyr= '"+DateTime.parse(Time.now.to_s).strftime('%Y').to_s+"' "
   end
@@ -41,4 +43,78 @@ class Imes::D238h < Imesdb
     self.bddm = 'D238'
   end
 
+  def str_qhlc(params)
+    Imes::D238h.transaction do
+      seq = 100
+      if params[:shenhe].present?
+        params[:shenhe].split(',').each do |name|
+          Imes::QhBdlc.create(
+              gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+              bzdm: seq, lclx: 'S', zwdm: 'REV', qhlx: 'R',
+              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+          seq = seq + 100
+        end
+      end
+
+      params[:hezhun].split(',').each do |name|
+        Imes::QhBdlc.create(
+            gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+            bzdm: seq, lclx: 'S', zwdm: 'APV', qhlx: 'A',
+            yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+        seq = seq + 100
+      end
+
+      if params[:wenyuan].present?
+        params[:wenyuan].split(',').each do |name|
+          Imes::QhBdlc.create(
+              gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+              bzdm: seq, lclx: 'S', zwdm: 'SGWY', qhlx: 'R',
+              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+          seq = seq + 100
+        end
+      end
+
+      if params[:caigou].present?
+        params[:caigou].split(',').each do |name|
+          Imes::QhBdlc.create(
+              gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+              bzdm: seq, lclx: 'S', zwdm: 'CGJL', qhlx: 'I',
+              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+          seq = seq + 100
+        end
+      end
+
+      if params[:yanfa].present?
+        params[:yanfa].split(',').each do |name|
+          Imes::QhBdlc.create(
+              gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+              bzdm: seq, lclx: 'S', zwdm: 'SGJL', qhlx: 'I',
+              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+          seq = seq + 100
+        end
+      end
+
+      if params[:zhihui].present?
+        params[:zhihui].split(',').each do |name|
+          Imes::QhBdlc.create(
+              gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+              bzdm: seq, lclx: 'P', zwdm: 'ZH', qhlx: 'I',
+              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+          seq = seq + 100
+        end
+      end
+
+      Imes::QhBdlc.create(
+          gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
+          bzdm: 9999, lclx: 'S', zwdm: 'SQYH', qhlx: 'Z',
+          yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: sqyh)
+
+      Imes::QhBdtx.create(
+          gsdm: gsdm, bddm: bddm, bdbh: bdbh, bdtx: "D238 Confirm #{name1} #{matnr} #{werks}"
+      )
+      self.bdnr = params[:bdnr]
+      self.bdzt = 'X'
+      save
+    end
+  end
 end

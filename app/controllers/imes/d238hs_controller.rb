@@ -33,7 +33,7 @@ class Imes::D238hsController < ApplicationController
   end
 
   def startflow
-
+    @imes_d238h = Imes::D238h.find(params[:bdbh])
   end
 
   def print
@@ -217,6 +217,29 @@ eJxjYBgFuICBBYQusEGjoeIKHFSxhhFKM+OgGbHTzIxtC8D0wf4PIJr9Z/8/CN1TD6KZNDq0G0A0Rwcz
                "
     end
 
+  end
+
+  def str_qhlc
+    @imes_d238h = Imes::D238h.find(params[:bdbh])
+    array = []
+    array = array + params[:caigou].split(',') if params[:caigou].present?
+    array = array + params[:yanfa].split(',') if params[:yanfa].present?
+    array = array + params[:zhihui].split(',') if params[:zhihui].present?
+    array = array + params[:shenhe].split(',') if params[:shenhe].present?
+    array = array + params[:hezhun].split(',') if params[:hezhun].present?
+
+    hash = User.validate_mail_id(array)
+    if hash.values.include?('NG')
+      list = []
+      hash.keys.each do |key|
+        list.append key if hash[key].eql?('NG')
+      end
+      @user_error = "#{list.join(',')} 審核名字不存在, 請更改!"
+      render :new
+    else
+      @imes_d238h.str_qhlc(params)
+      redirect_to @imes_d238h
+    end
   end
 
   private

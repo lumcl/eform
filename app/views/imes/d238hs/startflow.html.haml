@@ -3,7 +3,7 @@
 %h5
   = link_to t('back'), imes_d238hs_path
 
-//- if @imes_d238h.bdzt.blank?
+- if @imes_d238h.bdzt.eql?'0'
   .panel.panel-default
     .panel-heading
       .panel-title
@@ -14,7 +14,7 @@
 
       = form_tag(str_qhlc_imes_d238hs_path, method: 'post') do
         = hidden_field_tag 'sbm', 'X'
-        = hidden_field_tag 'bdbh', @imes_d238.bdbh
+        = hidden_field_tag 'bdbh', @imes_d238h.bdbh
         .form-group.col-xs-12
           %label{for: 'bdnr'}表單內容 Remark
           %textarea.form-control#bdnr{name:'bdnr', autocomplete:'off'}
@@ -27,7 +27,7 @@
 
         .form-group.col-xs-12.has-error
           %label{for: 'hezhun'}核准人 Approver
-          = text_field_tag 'hezhun', params[:hezhun] || Imes::D238z.approver(@imes_d238h.ernam), class: 'typeahead-input form-control', data:{provide:'typeahead'}
+          = text_field_tag 'hezhun', params[:hezhun] || Imes::D238z.approver('FELIX.JIANG'), class: 'typeahead-input form-control', data:{provide:'typeahead'}
 
         .form-group.col-xs-12.col-sm-4
           %label{for: 'caigou'}採購主管 Pur Mgr
@@ -49,7 +49,7 @@
             %span.glyphicon.glyphicon-floppy-save
             %b.text-primary
               啟動審核流程 Start Flow
-//- else
+- else
   .h3.text-danger
     簽核流程已經啟動. Approval process had been started!
 
