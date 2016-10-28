@@ -51,7 +51,7 @@ class Imes::D238h < Imesdb
           Imes::QhBdlc.create(
               gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
               bzdm: seq, lclx: 'S', zwdm: 'REV', qhlx: 'R',
-              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+              yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
           seq = seq + 100
         end
       end
@@ -60,7 +60,7 @@ class Imes::D238h < Imesdb
         Imes::QhBdlc.create(
             gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
             bzdm: seq, lclx: 'S', zwdm: 'APV', qhlx: 'A',
-            yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+            yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
         seq = seq + 100
       end
 
@@ -69,7 +69,7 @@ class Imes::D238h < Imesdb
           Imes::QhBdlc.create(
               gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
               bzdm: seq, lclx: 'S', zwdm: 'SGWY', qhlx: 'R',
-              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+              yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
           seq = seq + 100
         end
       end
@@ -79,7 +79,7 @@ class Imes::D238h < Imesdb
           Imes::QhBdlc.create(
               gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
               bzdm: seq, lclx: 'S', zwdm: 'CGJL', qhlx: 'I',
-              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+              yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
           seq = seq + 100
         end
       end
@@ -99,7 +99,7 @@ class Imes::D238h < Imesdb
           Imes::QhBdlc.create(
               gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
               bzdm: seq, lclx: 'P', zwdm: 'ZH', qhlx: 'I',
-              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+              yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
           seq = seq + 100
         end
       end
@@ -107,10 +107,10 @@ class Imes::D238h < Imesdb
       Imes::QhBdlc.create(
           gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
           bzdm: 9999, lclx: 'S', zwdm: 'SQYH', qhlx: 'Z',
-          yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: sqyh)
+          yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: applicant)
 
       Imes::QhBdtx.create(
-          gsdm: gsdm, bddm: bddm, bdbh: bdbh, bdtx: "D238 Confirm #{name1} #{matnr} #{werks}"
+          gsdm: gsdm, bddm: bddm, bdbh: bdbh, bdtx: "D238 Confirm #{bdbh} #{bdrq} #{applicant}"
       )
       self.bdnr = params[:bdnr]
       self.bdzt = 'X'

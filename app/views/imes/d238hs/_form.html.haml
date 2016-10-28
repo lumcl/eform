@@ -182,7 +182,7 @@
     .col-xs-12.col-sm-6.col-md-4
       = f.input :bdfd
 
-  .form-actions 
+  .form-actions
     .clearfix
     = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
       %span.glyphicon.glyphicon-floppy-save
