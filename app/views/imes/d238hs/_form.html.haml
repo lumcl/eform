@@ -212,15 +212,9 @@
     });
 
     $('#imes_d238h_gross_profit').change(function(){
-      //if ($('#imes_d238h_gross_profit').val() == ''){
-      //  alert('核准人不的為空! Approval cannot be blank!');
-      //}else{
-        alert('sss');
-      //}
     });
 
     $('#imes_d238h_target_price').change(function(){
-      //alert('target_price'+$('#imes_d238h_target_price').val());
       var tar_price = 0;
       var est_cost = 0;
       var gross_profit = 0;
@@ -232,16 +226,34 @@
       }
       if (tar_price != 0 ){
          gross_profit = returnFloat((tar_price - est_cost) / tar_price *100);
-         //if(parseFloat(gross_profit)<10){
-         //   $('#imes_d238h_gross_profit').style("color:red");
-         //}else{
-            $('#imes_d238h_gross_profit').css("color:green");//.style.display='none';
-         //}
+         if(parseFloat(gross_profit)<10){
+            $('#imes_d238h_gross_profit').css("color","red");
+         }else{
+            $('#imes_d238h_gross_profit').css("color","black");
+         }
          $('#imes_d238h_gross_profit').val(gross_profit);
       }
     });
 
     $('#imes_d238h_est_cost').change(function(){
+      var tar_price = 0;
+      var est_cost = 0;
+      var gross_profit = 0;
+      if ($('#imes_d238h_target_price').val() != ''){
+          tar_price = $('#imes_d238h_target_price').val();
+      }
+      if ($('#imes_d238h_est_cost').val() != ''){
+          est_cost = $('#imes_d238h_est_cost').val();
+      }
+      if (tar_price != 0 ){
+         gross_profit = returnFloat((tar_price - est_cost) / tar_price *100);
+         if(parseFloat(gross_profit)<10){
+            $('#imes_d238h_gross_profit').css("color","red");
+         }else{
+            $('#imes_d238h_gross_profit').css("color","black");
+         }
+         $('#imes_d238h_gross_profit').val(gross_profit);
+      }
     });
 
   })
