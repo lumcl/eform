@@ -3,7 +3,7 @@
 %h5
   = link_to t('back'), imes_d238hs_path
 
-//- if @imes_d238h.bdzt.blank?
+-if @imes_d238h.bdzt.blank?
   .panel.panel-default
     .panel-heading
       .panel-title
@@ -49,7 +49,7 @@
             %span.glyphicon.glyphicon-floppy-save
             %b.text-primary
               啟動審核流程 Start Flow
-//- else
+- else
   .h3.text-danger
     簽核流程已經啟動. Approval process had been started!
 

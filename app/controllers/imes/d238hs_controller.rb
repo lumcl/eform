@@ -33,7 +33,7 @@ class Imes::D238hsController < ApplicationController
   end
 
   def startflow
-
+    @imes_d238h = Imes::D238h.find(params[:bdbh])
   end
 
   def print
