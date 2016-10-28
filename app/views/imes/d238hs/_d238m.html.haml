@@ -1,52 +1,74 @@
-.panel.panel-default
-  .panel-heading
-    .panel-title
-      工單信息 MO info
-  .panel-body
-    %a{onclick: "$('#d034m_form').toggle();"}
-      %b
-        維護工單 Maintain MO
-    %div.details#d034m_form{style: 'display:none'}
-      = simple_form_for(create_d2m_imes_d238hs_path, method: 'get', remote: true) do
-        = hidden_field_tag 'bdbh', @imes_d238h.bdbh
-        .row.small
-          .col-xs-6.col-sm-2
-            .form-group
-              %label{for: 'posnr'}Item
-              = select_tag('posnr', options_for_select(@imes_d034h.imes_d034ls.pluck(:posnr)), class: 'form-control input-sm')
-          .col-xs-6.col-sm-3
-            .form-group
-              %label{for: 'aufnr'}MO
-              = text_field_tag 'aufnr', '', class: 'form-control input-sm'
-          .col-xs-6.col-sm-2
-            .form-group
-              %label{for: 'strdate'}S/D
-              = text_field_tag 'strdate','', class: 'form-control input-sm'
-          .col-xs-6.col-sm-2
-            .form-group
-              %label{for: 'duedate'}D/D
-              = text_field_tag 'duedate', '', class: 'form-control input-sm'
-          .col-xs-6.col-sm-3
-            .form-group
-              %label 保存記錄 Save
-              %br
-              = button_tag "提交 Submit", data: { disable_with: "Please wait..." }, class: 'btn btn-default btn-sm'
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+= render 'tooling'
 
-    .table-responsive
-      %table.table.table-bordered.table-condensed.small
-        %thead
-          %tr
-            %th.text-center Itm
-            %th.text-center MO
-            %th.text-center S/D
-            %th.text-center D/D
-            %th
-        %tbody
-          - @imes_d034h.imes_d034ms.sort_by{|t| [t.posnr, t.aufnr]}.each do |d034m|
-            %tr
-              %td.text-center= d034m.posnr
-              %td.text-center= d034m.aufnr
-              %td.text-center= d034m.strdate
-              %td.text-center= d034m.duedate
-              %td
-                = link_to '刪除 Dlt', destroy_d034m_imes_d034hs_path({uuid: d034m.uuid}), :data => { :confirm => t('confirm_delete')}, remote: true
+- if @imes_d238h.bdzt.blank?
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        設置簽核人員 Approval
+    .panel-body
+      - if @user_error.present?
+        .well.text-danger= @user_error
+
+      = form_tag(str_qhlc_imes_d238hs_path, method: 'post') do
+        = hidden_field_tag 'sbm', 'X'
+        = hidden_field_tag 'bdbh', @imes_d238.bdbh
+        .form-group.col-xs-12
+          %label{for: 'bdnr'}表單內容 Remark
+          %textarea.form-control#bdnr{name:'bdnr', autocomplete:'off'}
+            = params[:bdnr]
+
+        .form-group.col-xs-12
+          %label{for: 'shenhe'}審核人員 Reviewer
+          %textarea.typeahead-input.form-control#shenhe{name:'shenhe', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:shenhe] || @imes_d238h.imes_d238lz.shenhe
+
+        .form-group.col-xs-12.has-error
+          %label{for: 'hezhun'}核准人 Approver
+          = text_field_tag 'hezhun', params[:hezhun] || Imes::D238z.approver(@imes_d238h.ernam), class: 'typeahead-input form-control', data:{provide:'typeahead'}
+
+        .form-group.col-xs-12.col-sm-4
+          %label{for: 'caigou'}採購主管 Pur Mgr
+          %textarea.typeahead-input.form-control#caigou-input{name:'caigou', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:caigou] || @imes_d238h.imes_d238lz.caigou
+
+        .form-group.col-xs-12.col-sm-4
+          %label{for: 'yanfa'}研发主管 RD Mgr
+          %textarea.typeahead-input.form-control#shengguan{name:'yanfa', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:yanfa] || @imes_d238h.imes_d238lz.yanfa
+
+        .form-group.col-xs-12
+          %label{for: 'zhihui'}知會人員 Inform
+          %textarea.typeahead-input.form-control#zhihui{name:'zhihui', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:zhihui] || @imes_d238h.imes_d238lz.zhihui
+
+        .form-group.col-xs-12
+          = button_tag id:'submit-button', class: 'btn btn-default btn-lg', type: 'button', data:{loading_text: t('saving')} do
+            %span.glyphicon.glyphicon-floppy-save
+            %b.text-primary
+              啟動審核流程 Start Flow
+- else
+  .h3.text-danger
+    簽核流程已經啟動. Approval process had been started!
+
+:javascript
+  function extractor(query) {
+    var result = /([^,]+)$/.exec(query);
+    if(result && result[1])
+        return result[1].trim();
+    return '';
+  }
+
+  $(document).ready(function() {
+
+    $('#submit-button').click(function(){
+      if ($('#hezhun').val() == ''){
+        alert('核准人不的為空! Approval cannot be blank!')
+      }else{
+        $(this).button('loading');
+        this.form.submit();
+      }
+    });
+
+  })
+

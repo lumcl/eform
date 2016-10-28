@@ -3,9 +3,7 @@
 %h5
   = link_to t('back'), imes_d238hs_path
 
-= render 'form'
-
-- if @imes_d238h.bdzt.blank?
+//- if @imes_d238h.bdzt.blank?
   .panel.panel-default
     .panel-heading
       .panel-title
@@ -16,7 +14,7 @@
 
       = form_tag(str_qhlc_imes_d238hs_path, method: 'post') do
         = hidden_field_tag 'sbm', 'X'
-        = hidden_field_tag 'bdbh', @imes_d238h.bdbh
+        = hidden_field_tag 'bdbh', @imes_d238.bdbh
         .form-group.col-xs-12
           %label{for: 'bdnr'}表單內容 Remark
           %textarea.form-control#bdnr{name:'bdnr', autocomplete:'off'}
@@ -25,12 +23,11 @@
         .form-group.col-xs-12
           %label{for: 'shenhe'}審核人員 Reviewer
           %textarea.typeahead-input.form-control#shenhe{name:'shenhe', autocomplete:'off', data:{provide:'typeahead'}}
-            = params[:shenhe]
+            = params[:shenhe] || @imes_d238h.imes_d238lz.shenhe
 
         .form-group.col-xs-12.has-error
           %label{for: 'hezhun'}核准人 Approver
           = text_field_tag 'hezhun', params[:hezhun] || Imes::D238z.approver(@imes_d238h.ernam), class: 'typeahead-input form-control', data:{provide:'typeahead'}
-
 
         .form-group.col-xs-12.col-sm-4
           %label{for: 'caigou'}採購主管 Pur Mgr
@@ -38,14 +35,9 @@
             = params[:caigou] || @imes_d238h.imes_d238lz.caigou
 
         .form-group.col-xs-12.col-sm-4
-          %label{for: 'shengguan'}生管主管 PMC Mgr
-          %textarea.typeahead-input.form-control#shengguan{name:'shengguan', autocomplete:'off', data:{provide:'typeahead'}}
-            = params[:shengguan] || @imes_d238h.imes_d238lz.shengguan
-
-        .form-group.col-xs-12.col-sm-4
-          %label{for: 'wenyuan'}生管文員 PMC
-          %textarea.typeahead-input.form-control#wenyuan{name:'wenyuan', autocomplete:'off', data:{provide:'typeahead'}}
-            = params[:wenyuan] || @imes_d238h.imes_d238lz.wenyuan
+          %label{for: 'yanfa'}研发主管 RD Mgr
+          %textarea.typeahead-input.form-control#shengguan{name:'yanfa', autocomplete:'off', data:{provide:'typeahead'}}
+            = params[:yanfa] || @imes_d238h.imes_d238lz.yanfa
 
         .form-group.col-xs-12
           %label{for: 'zhihui'}知會人員 Inform
@@ -57,7 +49,7 @@
             %span.glyphicon.glyphicon-floppy-save
             %b.text-primary
               啟動審核流程 Start Flow
-- else
+//- else
   .h3.text-danger
     簽核流程已經啟動. Approval process had been started!
 
@@ -81,3 +73,4 @@
     });
 
   })
+
