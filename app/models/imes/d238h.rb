@@ -89,7 +89,7 @@ class Imes::D238h < Imesdb
           Imes::QhBdlc.create(
               gsdm: gsdm, bddm: bddm, bdbh: bdbh, qhzt: 0, lxdm: 'D238',
               bzdm: seq, lclx: 'S', zwdm: 'SGJL', qhlx: 'I',
-              yxxs: 1000, sqyh: sqyh, jlsj: Time.now, ysyh: name)
+              yxxs: 1000, sqyh: applicant, jlsj: Time.now, ysyh: name)
           seq = seq + 100
         end
       end
