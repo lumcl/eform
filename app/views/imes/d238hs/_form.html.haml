@@ -1,71 +1,71 @@
 = simple_form_for(@imes_d238h) do |f|
   .form-inputs
     .panel.panel-default
-    .panel-heading
-      .panel-title
-
-    .panel-body
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :company_site, collection: ['L300','L210','L400','L111']
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :bdbh, readonly: true
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase},readonly: true
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :sro_no
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :customer_id
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :customer_name
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :lei_design_no
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :asset_code
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :apply_date, as: :string, readonly: true
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :beneficiary
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :charge_code, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :electronic_engineer_ext
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :mechanical_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :mechanical_engineer_ext
+      .panel-heading
+        .panel-title
+          表頭
+      .panel-body
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :company_site, collection: ['L300','L210','L400','L111']
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :bdbh, readonly: true
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase},readonly: true
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :sro_no
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :customer_id
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :customer_name
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :lei_design_no
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :asset_code
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :apply_date, as: :string, readonly: true
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :beneficiary
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :charge_code, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :electronic_engineer_ext
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :mechanical_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :mechanical_engineer_ext
   .form-inputs
     .panel.panel-default
-    .panel-heading
-      .panel-title
-
-    .panel-body
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :cavity_quantity
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :tooling_life
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :ee_spec
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :power_application
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :currency, collection: ['USD','RMB','HKD','TWD','JPD']
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :target_price
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :est_qty
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :est_product_life
-      .col-xs-12.col-sm-6.col-md-4
-        = f.input :est_cost
-      .col-xs-12.col-sm-6.col-md-4
-        - if @imes_d238h.gross_profit < 10
-          = f.input :gross_profit, input_html:{style:'color:red;'}, readonly: true
-        - else
-          = f.input :gross_profit, readonly: true
+      .panel-heading
+        .panel-title
+          XXX
+      .panel-body
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :cavity_quantity
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :tooling_life
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :ee_spec
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :power_application
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :currency, collection: ['USD','RMB','HKD','TWD','JPD']
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :target_price
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :est_qty
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :est_product_life
+        .col-xs-12.col-sm-6.col-md-4
+          = f.input :est_cost
+        .col-xs-12.col-sm-6.col-md-4
+          - if @imes_d238h.gross_profit < 10
+            = f.input :gross_profit, input_html:{style:'color:red;'}, readonly: true
+          - else
+            = f.input :gross_profit, readonly: true
   .form-inputs
     .panel.panel-default
     .panel-heading
@@ -213,19 +213,20 @@
       .col-xs-12.col-sm-6.col-md-4
         = f.input :bdfd
 
-- if !@imes_d238h.bdzt.eql?'X'
-  .form-actions
-    .clearfix
-    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
-      %span.glyphicon.glyphicon-floppy-save
-      = t('save')
+    - if !@imes_d238h.bdzt.eql?'X'
+      .form-actions
+        .clearfix
+        = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+          %span.glyphicon.glyphicon-floppy-save
+          = t('save')
 
 - if !@imes_d238h.bdbh.blank? and !@imes_d238h.bdzt.eql?'X'
-  = form_tag(startflow_imes_d238hs_path, method: 'get') do
-    = hidden_field_tag 'bdbh', @imes_d238h.bdbh
-    = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
-      %span.glyphicon.glyphicon-floppy-save
-        啟動審核流程 Start Flow
+  %p
+    = form_tag(startflow_imes_d238hs_path, method: 'get') do
+      = hidden_field_tag 'bdbh', @imes_d238h.bdbh
+      = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
+        %span.glyphicon.glyphicon-floppy-save
+          啟動審核流程 Start Flow
 
 
 
