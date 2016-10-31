@@ -1,194 +1,226 @@
 = simple_form_for(@imes_d238h) do |f|
   .form-inputs
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :company_site, collection: ['L300','L210','L400','L111']
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase},readonly: true
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :sro_no
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :customer_id
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :customer_name
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :lei_design_no
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :asset_code
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :apply_date, as: :string, readonly: true
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :beneficiary
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :charge_code, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :electronic_engineer_ext
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :mechanical_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :mechanical_engineer_ext
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :cavity_quantity
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_life
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :ee_spec
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :power_application
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :currency, collection: ['USD','RMB','HKD','TWD','JPD']
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :target_price
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_qty
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_product_life
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_cost
-    .col-xs-12.col-sm-6.col-md-4
-      - if @imes_d238h.gross_profit < 10
-        = f.input :gross_profit, input_html:{style:'color:red;'}, readonly: true
-      - else
-        = f.input :gross_profit, readonly: true
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :lei_drawing
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_schedule
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_drawing
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :approval_record
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_delivery_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :required_sample_amount
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :required_sample_color
-    .col-xs-12.col-sm-6.col-md-4
-      = f.collection_check_boxes :production_site, [['1', '東莞立德廠'] ,['2', '東莞領航廠'],['3', '江蘇領先廠'],['4', '菲律賓廠']], :first, :last
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :new_tooling_proposal
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :apply_item
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_category
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :ac_pin
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :payment_provider
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_tooling_charge
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_safty_charge
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_profit_after_1st_year
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :verification_requirement
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :m_e_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :specified_material
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :attachment
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :purchasing_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :supplier
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :reason
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :attachment01
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_material
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :min_life_cycle_tooling
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :related_cost
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :tooling_cost
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :unit_price
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_tooling_schedule
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :t1
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :ppr
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :mp
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :execution_requirement
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :me_en_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :open_tooling_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :verification_status
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :fail_reason_desc
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :attachment11
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :lei_p_n
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :c_e_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :approval_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :attachment1
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :verification_status
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :fail_reason
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :component_approval_code
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :purchasing_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :approval_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :attachment21
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :approval_schedule
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :sales_department
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_payment_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :payment1
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :actual_payment_receipt_date, as: :string
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :actual
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :payment2
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :est_forecasted_demand
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :actual_demand
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :cus_pay_amount
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :cus_pay_accrued_into
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :lei_pay_amount
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :lei_pay_accrued_into
-    .col-xs-12.col-sm-6.col-md-4
-      = f.input :bdfd
+    .panel.panel-default
+    .panel-heading
+      .panel-title
 
+    .panel-body
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :company_site, collection: ['L300','L210','L400','L111']
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :required_department, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :bdbh, readonly: true
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :applicant, input_html:{value: current_user.email.split('@').first.upcase},readonly: true
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :sro_no
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :customer_id
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :customer_name
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :lei_design_no
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :asset_code
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :apply_date, as: :string, readonly: true
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :beneficiary
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :charge_code, collection: Sap::Csks.dept_list,label_method: :ktext, value_method: :kostl
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :electronic_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :electronic_engineer_ext
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :mechanical_engineer, input_html:{class: 'typeahead-input', data:{provide:'typeahead'}}
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :mechanical_engineer_ext
+  .form-inputs
+    .panel.panel-default
+    .panel-heading
+      .panel-title
+
+    .panel-body
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :cavity_quantity
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_life
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :ee_spec
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :power_application
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :currency, collection: ['USD','RMB','HKD','TWD','JPD']
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :target_price
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_qty
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_product_life
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_cost
+      .col-xs-12.col-sm-6.col-md-4
+        - if @imes_d238h.gross_profit < 10
+          = f.input :gross_profit, input_html:{style:'color:red;'}, readonly: true
+        - else
+          = f.input :gross_profit, readonly: true
+  .form-inputs
+    .panel.panel-default
+    .panel-heading
+      .panel-title
+
+    .panel-body
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :lei_drawing
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_schedule
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_drawing
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :approval_record
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_delivery_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :required_sample_amount
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :required_sample_color
+  .form-inputs
+    .panel.panel-default
+    .panel-heading
+      .panel-title
+
+    .panel-body
+      .col-xs-12.col-sm-6.col-md-4
+        = f.collection_check_boxes :production_site, [['1', '東莞立德廠'] ,['2', '東莞領航廠'],['3', '江蘇領先廠'],['4', '菲律賓廠']], :first, :last
+  .form-inputs
+    .panel.panel-default
+    .panel-heading
+      .panel-title
+
+    .panel-body
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :new_tooling_proposal
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :apply_item
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_category
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :ac_pin
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :payment_provider
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_tooling_charge
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_safty_charge
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_profit_after_1st_year
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :verification_requirement
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :m_e_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :specified_material
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :attachment
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :purchasing_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :supplier
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :reason
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :attachment01
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_material
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :min_life_cycle_tooling
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :related_cost
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :tooling_cost
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :unit_price
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_tooling_schedule
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :t1
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :ppr
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :mp
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :execution_requirement
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :me_en_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :open_tooling_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :verification_status
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :fail_reason_desc
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :attachment11
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :lei_p_n
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :c_e_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :approval_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :attachment1
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :verification_status
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :fail_reason
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :component_approval_code
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :purchasing_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :approval_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :attachment21
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :approval_schedule
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :sales_department
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_payment_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :payment1
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :actual_payment_receipt_date, as: :string
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :actual
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :payment2
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :est_forecasted_demand
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :actual_demand
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :cus_pay_amount
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :cus_pay_accrued_into
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :lei_pay_amount
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :lei_pay_accrued_into
+      .col-xs-12.col-sm-6.col-md-4
+        = f.input :bdfd
+
+- if !@imes_d238h.bdzt.eql?'X'
   .form-actions
     .clearfix
     = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
       %span.glyphicon.glyphicon-floppy-save
       = t('save')
 
-- if !@imes_d238h.bdbh.blank?
+- if !@imes_d238h.bdbh.blank? and !@imes_d238h.bdzt.eql?'X'
   = form_tag(startflow_imes_d238hs_path, method: 'get') do
     = hidden_field_tag 'bdbh', @imes_d238h.bdbh
     = button_tag class: 'btn btn-danger', type: 'button', onclick: "$(this).button('loading');this.form.submit();", data:{loading_text: t('saving')} do
@@ -257,7 +289,74 @@
       }
     });
 
+    $('#imes_d238h_est_tooling_charge').change(function(){
+      var tar_price = 0;
+      var est_cost = 0;
+      var est_qty = 0;
+      var est_tooling_charge = 0;
+      var est_safty_charge = 0;
+      var tooling_cost = 0;
+      if ($('#imes_d238h_target_price').val() != ''){
+        tar_price = $('#imes_d238h_target_price').val();
+      }
+      if ($('#imes_d238h_est_cost').val() != ''){
+        est_cost = $('#imes_d238h_est_cost').val();
+      }
+      if ($('#imes_d238h_est_qty').val() != ''){
+        est_qty = $('#imes_d238h_est_qty').val();
+      }
+      if ($('#imes_d238h_est_tooling_charge').val() != ''){
+        est_tooling_charge = $('#imes_d238h_est_tooling_charge').val();
+      }
+      if ($('#imes_d238h_est_safty_charge').val() != ''){
+        est_safty_charge = $('#imes_d238h_est_safty_charge').val();
+      }
+      if (est_qty != 0 ){
+        tooling_cost = returnFloat(((tar_price - est_cost) * est_qty *1000) - est_tooling_charge - est_safty_charge);
+        if(parseFloat(tooling_cost)<0){
+          $('#imes_d238h_est_profit_after_1st_year').css("color","red");
+        }else{
+          $('#imes_d238h_est_profit_after_1st_year').css("color","black");
+        }
+        $('#imes_d238h_est_profit_after_1st_year').val(tooling_cost);
+      }
+    });
+
+    $('#imes_d238h_est_safty_charge').change(function(){
+      var tar_price = 0;
+      var est_cost = 0;
+      var est_qty = 0;
+      var est_tooling_charge = 0;
+      var est_safty_charge = 0;
+      var tooling_cost = 0;
+      if ($('#imes_d238h_target_price').val() != ''){
+        tar_price = $('#imes_d238h_target_price').val();
+      }
+      if ($('#imes_d238h_est_cost').val() != ''){
+        est_cost = $('#imes_d238h_est_cost').val();
+      }
+      if ($('#imes_d238h_est_qty').val() != ''){
+        est_qty = $('#imes_d238h_est_qty').val();
+      }
+      if ($('#imes_d238h_est_tooling_charge').val() != ''){
+        est_tooling_charge = $('#imes_d238h_est_tooling_charge').val();
+      }
+      if ($('#imes_d238h_est_safty_charge').val() != ''){
+        est_safty_charge = $('#imes_d238h_est_safty_charge').val();
+      }
+      if (est_qty != 0 ){
+        tooling_cost = returnFloat(((tar_price - est_cost) * est_qty *1000) - est_tooling_charge - est_safty_charge);
+        if(parseFloat(tooling_cost)<0){
+          $('#imes_d238h_est_profit_after_1st_year').css("color","red");
+        }else{
+          $('#imes_d238h_est_profit_after_1st_year').css("color","black");
+        }
+        $('#imes_d238h_est_profit_after_1st_year').val(tooling_cost);
+      }
+    });
+
   })
+
 
 
   function returnFloat(value){
