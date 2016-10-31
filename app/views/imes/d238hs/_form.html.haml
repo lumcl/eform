@@ -90,15 +90,15 @@
     .panel.panel-default
       .panel-heading
         .panel-title
-
+          生产工厂
       .panel-body
-        .col-xs-12.col-sm-6.col-md-4
+        .col-xs-24.col-sm-12.col-md-8
           = f.collection_check_boxes :production_site, [['1', '東莞立德廠'] ,['2', '東莞領航廠'],['3', '江蘇領先廠'],['4', '菲律賓廠']], :first, :last
   .form-inputs
     .panel.panel-default
       .panel-heading
         .panel-title
-
+          預估模具.安規
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :new_tooling_proposal
@@ -116,16 +116,22 @@
           = f.input :est_safty_charge
         .col-xs-12.col-sm-6.col-md-4
           = f.input :est_profit_after_1st_year
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :verification_requirement
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :m_e_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          审核内容需求:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :specified_material
         .col-xs-12.col-sm-6.col-md-4
           = f.input :attachment
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :purchasing_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          采购课:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :supplier
         .col-xs-12.col-sm-6.col-md-4
@@ -151,9 +157,12 @@
         .col-xs-12.col-sm-6.col-md-4
           = f.input :mp
         .col-xs-12.col-sm-6.col-md-4
-          = f.input :execution_requirement
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :me_en_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          執行內容需求:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :open_tooling_date, as: :string
         .col-xs-12.col-sm-6.col-md-4
@@ -164,8 +173,12 @@
           = f.input :attachment11
         .col-xs-12.col-sm-6.col-md-4
           = f.input :lei_p_n
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :c_e_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          零件承認部:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :approval_date, as: :string
         .col-xs-12.col-sm-6.col-md-4
@@ -176,16 +189,24 @@
           = f.input :fail_reason
         .col-xs-12.col-sm-6.col-md-4
           = f.input :component_approval_code
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :purchasing_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          採購課:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :approval_date, as: :string
         .col-xs-12.col-sm-6.col-md-4
           = f.input :attachment21
         .col-xs-12.col-sm-6.col-md-4
           = f.input :approval_schedule
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :sales_department
+  .form-inputs
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          業務處:
+      .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :est_payment_date, as: :string
         .col-xs-12.col-sm-6.col-md-4
@@ -210,8 +231,6 @@
           = f.input :lei_pay_amount
         .col-xs-12.col-sm-6.col-md-4
           = f.input :lei_pay_accrued_into
-        .col-xs-12.col-sm-6.col-md-4
-          = f.input :bdfd
 
     - if !@imes_d238h.bdzt.eql?'X'
       .form-actions
