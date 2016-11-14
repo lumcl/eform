@@ -10,7 +10,7 @@ class Imes::D034h < Imesdb
   has_many :imes_qh_bdlcs, :class_name => 'Imes::QhBdlc', foreign_key: :bdbh, :dependent => :destroy
 
   def self.saprfc
-    Imes::D034h.where(rfc_type: 'E').each do |row|
+    Imes::D034h.where("bdjg in ('Y','N')").where("(rfc_type <> 'S' or rfc_type is null)").each do |row|
       if row.bdjg.eql?('Y')
         row.after_approved
       else
