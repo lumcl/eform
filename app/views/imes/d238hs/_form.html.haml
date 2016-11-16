@@ -1,7 +1,7 @@
-%p
-  %a{onclick: "$('#items').toggle();"}
-    %b
-      顯示所有明細
+%h5
+  %a{href:'#yewuchu'}業務處
+  .tab-1
+  %a{href:'#yewuchu'}業務處
 = simple_form_for(@imes_d238h) do |f|
   .form-inputs
     .panel.panel-default
@@ -211,6 +211,7 @@
       .panel-heading
         .panel-title
           業務處:
+          %a{name:"yewuchu"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :est_payment_date, as: :string
