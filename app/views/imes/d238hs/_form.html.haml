@@ -1,13 +1,30 @@
-%p
-  %a{onclick: "$('#items').toggle();"}
-    %b
-      顯示所有明細
+%h5
+  %a{href:'#yewuchu'}業務處
+  .tab-1
+  %a{href:'#caigouke'}採購課
+  .tab-1
+  %a{href:'#linjianchenren'}零件承認部
+  .tab-1
+  %a{href:'#chixingneirong'}執行內容需求
+  .tab-1
+  %a{href:'#moju'}模具
+  .tab-1
+  %a{href:'#shenheneirong'}审核内容需求
+  .tab-1
+  %a{href:'#angui'}預估模具.安規
+  .tab-1
+  %a{href:'#shengchanggong'}生产工厂
+  .tab-1
+  %a{href:'#kaimoyao'}開模要求
+  .tab-1
+  %a{href:'#yuguchenben'}模具.預估成本
 = simple_form_for(@imes_d238h) do |f|
   .form-inputs
     .panel.panel-default
       .panel-heading
         .panel-title
           表頭
+          %a{name:"biaotou"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :company_site, collection: ['L300','L210','L400','L111']
@@ -47,6 +64,7 @@
       .panel-heading
         .panel-title
           模具.預估成本
+          %a{name:"yuguchenben"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :cavity_quantity
@@ -76,6 +94,7 @@
       .panel-heading
         .panel-title
           開模要求
+          %a{name:"kaimoyao"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :lei_drawing
@@ -96,6 +115,7 @@
       .panel-heading
         .panel-title
           生产工厂
+          %a{name:"shengchanggong"}
       .panel-body
         .col-xs-24.col-sm-12.col-md-8
           = f.collection_check_boxes :production_site, [['1', '東莞立德廠'] ,['2', '東莞領航廠'],['3', '江蘇領先廠'],['4', '菲律賓廠']], :first, :last
@@ -104,6 +124,7 @@
       .panel-heading
         .panel-title
           預估模具.安規
+          %a{name:"angui"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :new_tooling_proposal
@@ -126,6 +147,7 @@
       .panel-heading
         .panel-title
           审核内容需求:
+          %a{name:"shenheneirong"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :specified_material
@@ -135,7 +157,8 @@
     .panel.panel-default
       .panel-heading
         .panel-title
-          采购课:
+          模具:
+          %a{name:"moju"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :supplier
@@ -167,6 +190,7 @@
       .panel-heading
         .panel-title
           執行內容需求:
+          %a{name:"chixingneirong"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :open_tooling_date, as: :string
@@ -183,6 +207,7 @@
       .panel-heading
         .panel-title
           零件承認部:
+          %a{name:"linjianchenren"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :approval_date, as: :string
@@ -199,6 +224,7 @@
       .panel-heading
         .panel-title
           採購課:
+          %a{name:"caigouke"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :approval_date, as: :string
@@ -211,6 +237,7 @@
       .panel-heading
         .panel-title
           業務處:
+          %a{name:"yewuchu"}
       .panel-body
         .col-xs-12.col-sm-6.col-md-4
           = f.input :est_payment_date, as: :string
