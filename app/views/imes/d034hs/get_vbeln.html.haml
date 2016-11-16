@@ -3,7 +3,7 @@
     .panel-title
       新建 / New SO Form
   .panel-body
-    = form_tag(new_imes_d034h_path, method: 'get') do
+    = form_tag(new_imes_d034h_url, method: 'get') do
       = hidden_field_tag 'sbm', 'X'
       .row
         .form-group.col-xs-12.col-sm-4
@@ -15,4 +15,4 @@
             %span.glyphicon.glyphicon-floppy-save
             新建 Create
           .tab-2
-            = link_to '返回 Back', :back
+          = link_to '返回 Back', :back
