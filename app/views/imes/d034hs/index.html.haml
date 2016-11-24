@@ -54,6 +54,7 @@
           %br
           Aprv
         %th.visible-sm.visible-lg.visible-md 名稱 Company
+        %th.visible-sm.visible-lg.visible-md 內容 Content
     %tbody
       - @imes_d034hs.each do |imes_d034h|
         %tr
@@ -63,5 +64,6 @@
           %td= imes_d034h.matnr
           %td= imes_d034h.bdjg
           %td.visible-sm.visible-lg.visible-md= imes_d034h.name1
+          %td.visible-sm.visible-lg.visible-md= truncate(imes_d034h.bdnr, length:20)
 
 = paginate @imes_d034hs unless @imes_d034hs.empty?
