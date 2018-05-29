@@ -1,0 +1,85 @@
+= link_to ' 前一頁', :back, class: 'glyphicon glyphicon-backward'
+.panel.panel-default
+  .panel-body
+    %div
+      = "公司代碼"
+      .tab-1
+      = @imes_d309h.gsdm
+    %div
+      = "表單代碼"
+      .tab-1
+      = @imes_d309h.bddm
+    %div
+      = "表單編號"
+      .tab-1
+      = @imes_d309h.bdbh
+    %div
+      = "表單日期"
+      .tab-1
+      = @imes_d309h.bdrq
+    %div
+      = "請假類別"
+      .tab-1
+      = @imes_d309h.category
+    %div
+      = "工号"
+      .tab-1
+      = @imes_d309h.employeeid
+    %div
+      = "姓名"
+      .tab-1
+      = @imes_d309h.emplname
+    %div
+      = "职位"
+      .tab-1
+      = @imes_d309h.jobposition
+    %div
+      = "部門代碼"
+      .tab-1
+      = @imes_d309h.departmentid
+    %div
+      = "部門名稱"
+      .tab-1
+      = @imes_d309h.departmentname
+    %div
+      = "請假日期(始)"
+      .tab-1
+      = @imes_d309h.estimatedeparture
+    %div
+      = "請假日期(終)"
+      .tab-1
+      = @imes_d309h.estimatereturn
+    %div
+      = "案由"
+      .tab-1
+      = @imes_d309h.subject
+    %div
+      = "本人電話號碼"
+      .tab-1
+      = @imes_d309h.phonenumber
+    %div
+      = "地點"
+      .tab-1
+      = @imes_d309h.toaddress
+    %div
+      = "核准者"
+      .tab-1
+      = @imes_d309h.qhyh
+    %div
+      = "核准時間"
+      .tab-1
+      = @imes_d309h.qhsj.strftime('%Y%m%d %H:%M') if @imes_d309h.qhsj.present?
+    %div
+      = "申請人"
+      .tab-1
+      = @imes_d309h.sqyh
+  .panel-heading
+    .panel-title
+      = "V"
+  .panel-body
+    %p
+    - if @imes_d309h.bdfd.present?
+      = download_imes_file(@imes_d309h.bdfd)
+    %hr
+= render partial: 'imes/qh_bdlcs/qh_form', locals: {qh_bdlcs: @imes_d309h.imes_qh_bdlcs}
+

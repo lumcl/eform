@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
 
   namespace :imes do
-    resources :qh_bdbhs
-  end
-  namespace :imes do
-
-    resources :d238hs do
-      post :str_qhlc, on: :collection
-      get :tooling, on: :collection
-      get :startflow, on: :collection
-      get :print, on: :collection
-      get :printend, on: :collection
-      get :get_customer_name, on: :collection
-    end
 
     resources :file_uploaders do
       post :bd_file_upload, on: :collection
@@ -44,6 +32,7 @@ Rails.application.routes.draw do
     resources :d300hs
     resources :d600hs
     resources :d302hs
+    resources :d309hs
   end
 
   resources :selects do
